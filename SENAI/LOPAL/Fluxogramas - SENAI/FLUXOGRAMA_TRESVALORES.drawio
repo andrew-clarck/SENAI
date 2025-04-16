@@ -1,0 +1,122 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.2 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="25.0.2">
+  <diagram name="Página-1" id="O52Bbr9sFC25dwBvg2Pu">
+    <mxGraphModel dx="2100" dy="2427" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-2" target="Fb-_cfkr58BGuqgh_vxu-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-2" value="INÍCIO" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="310" y="-180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-6" target="Fb-_cfkr58BGuqgh_vxu-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-6" value="VALOR1, VALOR2, VALOR3" style="shape=manualInput;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="-90" width="100" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-8" target="Fb-_cfkr58BGuqgh_vxu-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-8" target="Fb-_cfkr58BGuqgh_vxu-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-8" value="VALOR1 &amp;gt; VALOR2&lt;div&gt;E&lt;/div&gt;&lt;div&gt;VALOR1 &amp;gt; VALOR3&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="320" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-11" target="Fb-_cfkr58BGuqgh_vxu-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-11" value="&#39;&#39;VALOR1 É O MAIOR&#39;&#39;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="350" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-13" target="Fb-_cfkr58BGuqgh_vxu-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-13" target="Fb-_cfkr58BGuqgh_vxu-24">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="960" y="555" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-13" value="VALOR2 &amp;gt; VALOR1&lt;div&gt;E&lt;/div&gt;&lt;div&gt;VALOR2 &amp;gt; VALOR3&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="480" width="160" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-15" value="&#39;&#39;VALOR2 É O MAIOR&quot;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;size=0.3125;" vertex="1" parent="1">
+          <mxGeometry x="380" y="515" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-17" target="Fb-_cfkr58BGuqgh_vxu-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-17" value="&#39;&#39;VALOR3 É O MAIOR&quot;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="720" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-19" value="FIM" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="390" y="800" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.36;entryY=-0.013;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-15" target="Fb-_cfkr58BGuqgh_vxu-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-24" target="Fb-_cfkr58BGuqgh_vxu-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-24" target="Fb-_cfkr58BGuqgh_vxu-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-24" value="VALOR3 &amp;gt; VALOR1&lt;div&gt;E&lt;/div&gt;&lt;div&gt;VALOR3 &amp;gt; VALOR2&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="970" y="478.75" width="170" height="152.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-26" target="Fb-_cfkr58BGuqgh_vxu-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-26" target="Fb-_cfkr58BGuqgh_vxu-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-26" value="VALOR1 != VALOR2&lt;div&gt;E&lt;/div&gt;&lt;div&gt;VALOR1 != VALOR3&lt;/div&gt;&lt;div&gt;E&lt;/div&gt;&lt;div&gt;VALOR2 != VALOR3&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="70" width="240" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Fb-_cfkr58BGuqgh_vxu-28" target="Fb-_cfkr58BGuqgh_vxu-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="-45" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-28" value="&#39;&#39;VALORES INVÁLIDOS, DIGITE VALORES DIFERENTES&#39;&#39;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="790" y="105" width="120" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-32" value="NÃO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#b85450;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="685" y="128" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-33" value="SIM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="370" y="128" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-34" value="NÃO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#b85450;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="475" y="358" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-35" value="SIM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="225" y="358" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-36" value="SIM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="540" y="528" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-37" value="NÃO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#b85450;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="825" y="528" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-38" value="SIM" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="950" y="728" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-39" value="&#39;&#39;INFORMAÇÕES INVÁLIDAS&#39;&#39;&lt;div&gt;(ERRO)&lt;/div&gt;" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;" vertex="1" parent="1">
+          <mxGeometry x="1245" y="515" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Fb-_cfkr58BGuqgh_vxu-41" value="NÃO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#b85450;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="1155" y="528" width="50" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
