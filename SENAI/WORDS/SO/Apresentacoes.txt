@@ -1,0 +1,160 @@
+Apresentações:
+
+1 - Debian:
+Ian(Criador) + Debra (Esposa do criador) = Debian
+
+Gerenciador de pacotes: APT
+
+Modelo de atualização: baseado em estabilidade, separado em "Stable" "Testing" e "Unstable"
+
+O que o difere dos outros?
+-Software livre
+-Estável e seguro
+-Vasto suporte de hardware 
+-Atualizações suaves
+-O Debian é uma comunidade
+
+Várias arquiteturas de hardware
+IOT e Dispositivos Embarcados
+Vasto número de pacotes de software
+Versões diferentes
+Computação em nuvem
+Suporte de longo prazo
+É oferecido para empresas!
+Utilizado como base para outras distribuições do Linux, como o Ubuntu
+
+
+
+Facilidade do uso:
+O Debian é indicado para usuários iniciante e até para avançados
+Ele oferece diversos benifícios à empresas
+
+
+
+Possui diversas documentações oficiais, como guias para instalação e até tópicos avançados
+
+
+
+
+
+
+
+
+2- SteamOS:
+
+Criado para jogos
+Possui uma vasta biblioteca de jogos
+
+Público - Gamers e Estúdios de Jogos com códigos abertos
+
+Não é ideal para servidores, sistemas embarcados, etc.
+Baseado na distribuição Debian
+-Rolling Release e LTS
+
+Não utiliza um gerenciador de pacotes tradicional
+
+
+O SteamOS é rápido, leve e bem otimizado para jogos
+
+Comunidade: Formada por jogadores, discussões sobre jogos
+Suporte: A equipe da SteamOS/O próprio SteamOS realiza o suporte
+
+(Realmente muito bom para jogos)
+
+
+
+
+
+
+5- Fedora Silverblue:
+Surgiu através do RedHat, num encontro entre um hacker e um empresário, assim foi criado o projeto, inicialmente chamado de Fedora project
+O projeto foi inovador, uma alternativa comunitária do Red Hat. O projeto foi essencial para o nascimento de outras tecnologias
+
+O fedora project foi se atualizando e mudando seus nomes, ganhando também o nome de Fedora Atomic.
+
+2018 - nascimento do Fedora Silverblue, atingindo os principais objetivos do projeto
+
+Público - Desenvolvedores, entusiastas de tecnologia
+Casos de uso - Não recomendado para servidores
+
+Gerenciador de pacotes: Flatpak; RPM-OSTREE; TOOLBOX; DNF
+
+Rolling Release: Não possui um rolling release, mas possui o Release-Based, em que são lançadas atualizações periódicas, em datas específicas
+
+Sistemas gráficos: GNOME(Padrão) - Menos personalizado, mais poluído, mais simples
+KDE Plasma - Mais personalizável, simples
+Apesar de uma interface simples, limpa e moderna, seu uso(Sistema Operacional) é complexo
+
+
+
+
+6- Ubuntu Server:
+
+Criado por Mark Shuttleworth
+
+Exemplos de uso:
+-Servidor de mídia
+-Servidor de Segurança
+-Servidor Backup
+
+Desenvolvedores: 
+Canonical(empresa) e a comunidade
+
+Gerenciador de pacotes - APT
+
+Rolling Release - Sistema atualizado continuamente, sem adicionar novas versões
+LTS -  Oferece suporte prolongado, sem necessidade de atualizações frequentes
+
+Não possui uma interface gráfica, todos os processos são feitos por linhas de comando
+
+Diferencial: Seguro, alta performance, escalabilidade e segurança
+Características únicas: É bem versátil e possui código aberto
+
+
+Facilidade de uso: O sistema chama a atenção de usuários que não precisam de interface gráfica e sabem utilizar o terminal (linhas de comando)
+
+O sistema é recomendado para usuários mais avançados, por ser apenas manuseado através de comandos.
+
+
+
+7- Arch Linux:
+Criado por Judd Vinet e Per Lidén
+Lançado em 11/03/2002
+
+
+Público - usuários avançado do sistema Linux e entusiastas
+
+O sistema é altamente personalizável e minimalista
+
+Gerenciador de pacotes: Pacman; yay
+
+Ambientes gráficos: Não possui um específico, mas possui vários que você pode escolher, como o KDE Plasma
+
+O usuário configura o sistema desde o zero
+O Arch não possui um foco específico, como os outros sistemas operacionais
+Ele pode ser 100% alterado, diferente do Fedora Silverblue, que é imutável
+
+Pensando em SOs como jogos, o Arch seria um Minecraft, pois nele, você possui liberdade total para fazer oque quiser
+
+Por utilizar principalmente as linhas de comando, é recomendado para usuários mais avançados de linux
+
+
+
+8- Kali Linux:
+Criado pela OFFENSIVE security (Empresa) - nome inspirado na deusa Kali
+Utilizado para testes de penetração de redes e segurança, além disso, é utilizado para análises forenses, é muito utilizado por hackers éticos e hackers
+Análise de vulnerabilidades, engenharia reversa, perícia digital.
+
+Pode ser utilizado em sistemas embarcados
+
+Gerenciador de pacotes: APT
+Modelo de atualização/desenvolvimento: Rolling-Release
+Modelo de suporte: LTS
+
+Ambiente gráfico: Padrão XFCE, um abiente leve e estável, além de ser minimalista e altamente custimizável
+
+Não recomendado para iniciantes, tanto em cibersegurança quanto em Linux, é ideal para especialistas em cibersegurança e Linux
+
+Documentação completa
+Comunidade não muito frequente
+
