@@ -29,3 +29,13 @@ ON tbl_livros (titulo);
 -- Deleta um index de uma tabela
 DROP INDEX idx_titulo
 ON tbl_livros;
+
+ALTER TABLE tbl_livros
+ADD genero VARCHAR(50)
+AFTER id_livro;
+
+ALTER TABLE tbl_livros
+MODIFY COLUMN titulo VARCHAR(150);
+
+ALTER TABLE tbl_livros
+DROP COLUMN genero;

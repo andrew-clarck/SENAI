@@ -125,11 +125,11 @@
 //         super(titular, saldo);
 //     }
 //     sacar(valor) {
-//         let valorRetirado = this.saldo - valor - 2;
+//         let valorRetirado = this.saldo - (valor + 2);
 //         if (valorRetirado < 0) {
 //             return `Saldo indisponível. Saldo atual: R$${this.saldo}`;
 //         } else {
-//             this.saldo -= valor + 2;
+//             this.saldo -= (valor + 2);
 //             return `Valor sacado com sucesso: R$${valor}. Saldo atual: R$${this.saldo}`
 //         }
 //     }
@@ -152,3 +152,44 @@
 
 // console.log(`Saldo antigo: R$${contapoupanca.saldo}. Saldo atual: R$${contapoupanca.atualizarSaldo()}`);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* Encapsulamento */
+/* 6 */
+class Produto {
+  #nome;
+  #preco;
+
+  constructor(nome, preco) {
+    this.#nome = nome;
+    this.#preco = preco;
+  }
+  get infoProduto() {
+    if (this.#preco < 0) {
+      return "Preço inválido, menor que zero.";
+    } else {
+      return `O produto ${this.#nome} custa R$${this.#preco}`;
+    }
+  }
+
+  set mudarPreco(valor) {
+    if (valor < 0) {
+      console.log("Preço inválido, menor que zero.");
+    } else {
+      this.#preco = valor;
+    }
+  }
+
+  set mudarNome(nome) {
+    this.#nome = nome;
+  }
+}
+
+const produto1 = new Produto("Café", 50);
+const produto2 = new Produto("Chocolate", -20);
+
+console.log(produto1.infoProduto);
+console.log(`O novo nome do produto é: ${(produto1.mudarNome = "Torrone")}`);
+console.log(`O novo preço do produto é: R$${(produto1.mudarPreco = 23)}`);
+console.log(produto1.infoProduto);
+
+console.log(produto2.infoProduto);
+produto2.mudarPreco = -1;

@@ -1,0 +1,2 @@
+Para fazer conexão com o server, utilize o aplicativo: XAMP
+Deve ser feito SEMPRE antes de abrir o MySQL Workbench
