@@ -1,0 +1,23 @@
+body {
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #ffffff;
+    background-image: url(../src/images/musica.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+p {
+    color: #333333;
+}
+
+img {
+    width: 150px;
+}
+
+video {
+    width: 100%;
+}

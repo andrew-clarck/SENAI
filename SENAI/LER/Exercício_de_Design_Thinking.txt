@@ -1,0 +1,10 @@
+Usuários do tipo estudantes que trabalham e estudam têm dificuldades em lidar com o tempo e equilibrar o esforço e prazer,
+o que causa estresse e pouco tempo livre para atividades de lazer ou de interesse do usuário. 
+
+
+Resolução digital: Aplicativo que possui sistema de organização de tarefas com IA,
+para deixar as tarefas mais organizadas e passar as instruções mais eficientes para fazer a tarefa, além disso,
+caso a tarefa seja muito longa,
+o app apitará um alarme a cada x horas,
+para que o estudante descanse e seja mais eficiente,
+além da tarefa se tornar menos estressante. 

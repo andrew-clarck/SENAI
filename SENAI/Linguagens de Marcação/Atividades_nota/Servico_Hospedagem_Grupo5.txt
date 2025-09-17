@@ -1,0 +1,3 @@
+Qual serviço de hospedagem escolhemos e por quê?
+
+Escolhemos o serviço "Premium" da Hostinger por conta da sua performance melhor quando comparado ao serviço "Start" do Hostgator, isso se deve aos servidores LiteSpeed e os backups semanais oferecidos. Além disso, o Hostinger oferece a capacidade de hospedagem para múltiplos sites (25 sites) sem um custo adicional. Além da performance a Hostinger oferece um suporte de 24 horas e possui muita flexibilidade na criação de sites, oferecendo serviços IA e tendo suporte para vários tipos de sites.
