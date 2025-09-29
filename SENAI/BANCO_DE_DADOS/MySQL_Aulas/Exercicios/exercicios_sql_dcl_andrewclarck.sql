@@ -3,12 +3,14 @@
 CREATE USER 'secretaria'@'localhost' IDENTIFIED BY 'Escola@Sec1';
 CREATE USER 'professor'@'localhost' IDENTIFIED BY 'Escola@Prof2';
 
+DROP USER 'secretaria'@'localhost';
+DROP USER 'professor'@'localhost';
 -- Permissões iniciais
 GRANT ALL PRIVILEGES ON db_escola.tbl_alunos TO 'secretaria'@'localhost';
 GRANT SELECT ON db_escola.tbl_alunos TO 'professor'@'localhost';
 
 -- Permissões pós-promoção do professor
-GRANT UPDATE ON db_escola.tbl_alunos TO 'professor'@'localhost';
+GRANT SELECT, UPDATE ON db_escola.tbl_alunos TO 'professor'@'localhost';
 
 -- Permissões pós-rescisão do contrato do funcionário da secretaria
 REVOKE ALL PRIVILEGES ON db_escola.tbl_alunos FROM 'secretaria'@'localhost';
