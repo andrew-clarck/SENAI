@@ -11,5 +11,19 @@ class Forma {
 }
 
 class Quadrado extends Forma {
-  constructor() {}
+  constructor(lado) {
+    super();
+    this.lado = lado;
+  }
+
+  calcularArea() { // Se não for "reescrito"(implementado), dará o erro escrito em "Forma".
+    return this.lado * this.lado;
+  }
 }
+
+// const forma1 = new Forma(); - Erro -> "Impossível instanciar essa classe".
+const quadrado1 = new Quadrado(5);
+
+console.log(`${quadrado1.calcularArea()}cm²`);
+
+
