@@ -1,0 +1,22 @@
+table {
+    border: 1px solid black;
+    width: 500px;
+    border-spacing: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    background-color: wheat;
+}
+
+th {
+    border: 1px solid black;
+    padding: 5px;
+    background-color: burlywood;
+    /* background-image: url(../src/images/frango.jpg); */
+}
+
