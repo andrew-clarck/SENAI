@@ -42,3 +42,18 @@ CREATE TABLE tbl_aulas (
     PRIMARY KEY(numero_ordem, id_curso),
     FOREIGN KEY (id_curso) REFERENCES tbl_cursos(id_curso)
 );
+
+CREATE USER 'professor'@'localhost' IDENTIFIED BY 'Escola@Prof2';
+
+GRANT SELECT ON db_escola.tbl_alunos TO 'professor'@'localhost';
+
+GRANT SELECT, UPDATE ON db_escola.tbl_alunos TO 'professor'@'localhost';
+
+ALTER TABLE tbl_livros
+MODIFY COLUMN titulo VARCHAR(150);
+
+REVOKE SELECT, UPDATE ON db_escola.tbl_alunos FROM 'professor'@'localhost';
+
+REVOKE ALL PRIVILEGES ON db_escola.tbl_alunos FROM 'secretaria'@'localhost';
+
+DROP DATABASE db_biblioteca_b;
