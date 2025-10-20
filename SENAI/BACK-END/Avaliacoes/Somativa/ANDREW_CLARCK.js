@@ -15,7 +15,7 @@
 // }
 
 // function checarCandidato(nome) {
-//     if (candidatos[nome] == true) {
+//     if (candidatos[nome] == true) { // Podia ser apenas "if (candidatos[nome])", não precisa de "== true"
 //         return true;
 //     } else {
 //         return false;
@@ -34,7 +34,7 @@
 //     }
 
 //     aumentarSalario(percentual) {
-//         return this.salario = this.salario + ((this.salario * percentual) / 100);
+//         return this.salario = this.salario + ((this.salario * percentual) / 100); // "return" não é necessário
 //     }
 
 //     exibirDados() {
@@ -102,7 +102,7 @@
 
 //     calcularSalario() {
 //         if (this.bonusPercentual > 15) {
-//             return `Bônus maior do que o limite. Limite: 15%`;
+//             return `Bônus maior do que o limite. Limite: 15%`; // Podia apenas dar o bônus de 15%, ao invés de mostrar um erro, mas não está errado
 //         } else {
 //             return `R$${(this.salarioBase + (this.salarioBase * this.bonusPercentual) / 100).toFixed(2)}`;
 //         }
@@ -191,43 +191,46 @@
 // }
 
 /* 6 */
-// class BancoDeHoras {
-//   #horas;
-//   constructor(horas, colaborador) {
-//     this.#horas = horas;
-//     this.colaborador = colaborador;
-//   }
+class BancoDeHoras {
+  #horas;
+  // "colaborador;" - pode e é melhor ser colocado, para identificar todos os atributos
+  constructor(horas, colaborador) {
+    this.#horas = horas;
+    this.colaborador = colaborador;
+  }
 
-//   adicionarHoras(qtd) {
-//     if (qtd >= 0) {
-//       return (this.#horas += qtd);
-//     } else {
-//       return console.log(`Impossível adicionar horas negativas.`);
-//     }
-//   }
+  adicionarHoras(qtd) {
+    if (qtd >= 0) {
+      return (this.#horas += qtd);
+    } else {
+      return console.log(`Impossível adicionar horas negativas.`); // console.log dentro do método para mostrar erro, logo, é válido. (Nunca colocar console.log em método se não for para mostrar erro)
+    }
+  }
 
-//   retirarHoras(qtd) {
-//     if (this.#horas - qtd < 0) {
-//       return console.log(
-//         `Quantidade de horas muito elevada, saldo negativo, tente novamente.`
-//       );
-//     } else {
-//       return (this.#horas -= qtd);
-//     }
-//   }
+  retirarHoras(qtd) {
+    if (this.#horas - qtd < 0) {
+      return console.log(
+        `Quantidade de horas muito elevada, saldo negativo, tente novamente.` // console.log dentro do método para mostrar erro, logo, é válido. (Nunca colocar console.log em método se não for para mostrar erro)
+      );
+    } else {
+      return (this.#horas -= qtd);
+    }
+  }
 
-//   get consultarHoras() {
-//     return this.#horas;
-//   }
-// }
+  get consultarHoras() {
+    return `
+    Nome: ${this.colaborador}
+    Horas: ${this.#horas}`;
+  }
+}
 
-// const banco1 = new BancoDeHoras(10, "Andrew");
+const banco1 = new BancoDeHoras(10, "Andrew");
 
-// console.log(`${banco1.consultarHoras} Horas no Banco`);
+console.log(banco1.consultarHoras);
 
-// banco1.adicionarHoras(10);
-// banco1.retirarHoras(5);
-// console.log(`${banco1.consultarHoras} Horas no Banco`);
+banco1.adicionarHoras(10);
+banco1.retirarHoras(5);
+console.log(banco1.consultarHoras);
 
-// banco1.adicionarHoras(-1);
-// banco1.retirarHoras(20);
+banco1.adicionarHoras(-1);
+banco1.retirarHoras(20);
