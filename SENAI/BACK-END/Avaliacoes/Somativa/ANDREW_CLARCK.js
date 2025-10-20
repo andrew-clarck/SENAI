@@ -191,46 +191,46 @@
 // }
 
 /* 6 */
-class BancoDeHoras {
-  #horas;
-  // "colaborador;" - pode e é melhor ser colocado, para identificar todos os atributos
-  constructor(horas, colaborador) {
-    this.#horas = horas;
-    this.colaborador = colaborador;
-  }
+// class BancoDeHoras {
+//   #horas;
+//   // "colaborador;" - pode e é melhor ser colocado, para identificar todos os atributos
+//   constructor(horas, colaborador) {
+//     this.#horas = horas;
+//     this.colaborador = colaborador;
+//   }
 
-  adicionarHoras(qtd) {
-    if (qtd >= 0) {
-      return (this.#horas += qtd);
-    } else {
-      return console.log(`Impossível adicionar horas negativas.`); // console.log dentro do método para mostrar erro, logo, é válido. (Nunca colocar console.log em método se não for para mostrar erro)
-    }
-  }
+//   adicionarHoras(qtd) {
+//     if (qtd >= 0) {
+//       return (this.#horas += qtd);
+//     } else {
+//       return console.log(`Impossível adicionar horas negativas.`); // console.log dentro do método para mostrar erro, logo, é válido. (Nunca colocar console.log em método se não for para mostrar erro)
+//     }
+//   }
 
-  retirarHoras(qtd) {
-    if (this.#horas - qtd < 0) {
-      return console.log(
-        `Quantidade de horas muito elevada, saldo negativo, tente novamente.` // console.log dentro do método para mostrar erro, logo, é válido. (Nunca colocar console.log em método se não for para mostrar erro)
-      );
-    } else {
-      return (this.#horas -= qtd);
-    }
-  }
+//   retirarHoras(qtd) {
+//     if (this.#horas - qtd < 0) {
+//       return console.log(
+//         `Quantidade de horas muito elevada, saldo negativo, tente novamente.` // console.log dentro do método para mostrar erro, logo, é válido. (Nunca colocar console.log em método se não for para mostrar erro)
+//       );
+//     } else {
+//       return (this.#horas -= qtd);
+//     }
+//   }
 
-  get consultarHoras() {
-    return `
-    Nome: ${this.colaborador}
-    Horas: ${this.#horas}`;
-  }
-}
+//   get consultarHoras() {
+//     return `
+//     Nome: ${this.colaborador}
+//     Horas: ${this.#horas}`;
+//   }
+// }
 
-const banco1 = new BancoDeHoras(10, "Andrew");
+// const banco1 = new BancoDeHoras(10, "Andrew");
 
-console.log(banco1.consultarHoras);
+// console.log(banco1.consultarHoras);
 
-banco1.adicionarHoras(10);
-banco1.retirarHoras(5);
-console.log(banco1.consultarHoras);
+// banco1.adicionarHoras(10);
+// banco1.retirarHoras(5);
+// console.log(banco1.consultarHoras);
 
-banco1.adicionarHoras(-1);
-banco1.retirarHoras(20);
+// banco1.adicionarHoras(-1);
+// banco1.retirarHoras(20);
