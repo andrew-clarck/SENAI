@@ -1,0 +1,102 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap'); */
+
+body {
+  font-family: "Pixelify Sans", Arial, Helvetica, sans-serif;
+}
+/* 
+h1 {
+  font-size: 48px; Tamanho fixo
+} */
+/* table {
+  border: 1px solid black; Borda fixa de 1 pixel
+}  */
+
+/* div {
+  font-size: 20px;
+}
+
+p {
+  font-size: 0.8em;
+}  O parágrafo terá 16px (20 * 0.8) */
+
+html {
+  font-size: 16px; /* Padrão do navegador */
+}
+
+h1 {
+  font-size: 3rem;
+} /* Resultado: 48px (16 * 3) */
+
+p {
+  font-size: 1rem;
+} /* Resultado: 16px (16 * 1) */
+
+.pequeno {
+  font-size: 0.875rem;
+} /* Resultado: 14px (16 * 0.875) */
+
+a {	/* Estilo base para todos os links */
+    color: #00ff00;
+    text-decoration: none; /* Remove o sublinhado */
+}
+a:visited {
+    color: #f6ff00; /* Amarelo para links já visitados */
+}
+a:hover {
+    color: #a5069d87;
+    text-decoration: underline; /* Adiciona sublinhado apenas no hover */
+}
+a:active {
+    color: cyan; /* Vermelho enquanto o link está sendo pressionado */  
+}
+
+#espaco_imagem {
+    max-width: 70%;
+    background-color: blue;
+}
+
+article > img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1rem; /* Usa rem para espaçamento consistente */
+    border-radius: 8px; /* Cantos suavemente arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    opacity: 0.9;
+}
+
+ul {
+  list-style-type: none; /* Remove os marcadores padrão */
+  padding-left: 0;
+}
+
+ul li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee; 
+/* Linha separadora entre os itens */
+}
+
+ol {
+  list-style-type: decimal-leading-zero; /* 01, 02, 03... */
+  padding-left: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    tbody tr:nth-child(even){
+    background-color: blue; /* Um azul para as linhas pares */
+    }
+}
+
+th, td {
+    padding: 0.75rem; /* Usa rem para espaçamento */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
