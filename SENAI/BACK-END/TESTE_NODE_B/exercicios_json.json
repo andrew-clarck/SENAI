@@ -1,0 +1,53 @@
+{
+    "matricula": 98765,
+    "nome_completo": "Andrew Clarck",
+    "email": "andrew.clarck@aluno.senai.br",
+    "idade": 16,
+    "bolsista": true,
+    "media_final": 9,
+    "curso": null
+}
+
+{
+    "codigo_turma": "DETS-I-1B-25CT/S",
+    "periodo": "Manhã",
+    "professor": {
+        "nome": "Celso Rodrigo Giusti",
+        "area": "Desenvolvimento Back-End"
+    },
+    "alunos": [{
+        "nome": "Andrew", 
+        "matricula": 2567
+    }, 
+    {
+        "nome": "Lucas", 
+        "matricula": 5445
+    }]
+}
+
+{
+    "id_pedido": 123,
+    "data_pedido": "2025-11-03T12:40:00",
+    "status": "Processando",
+    "cliente": {
+        "nome": "Enzo",
+        "email": "enzo.sola@gmail.com"
+    },
+    "endereco_entrega": {
+        "rua": "Emílio Ribas",
+        "numero": 509,
+        "cidade": "Salto",
+        "cep": 13321360
+    },
+    "itens": [{
+        "id_produto": "ABC-123",
+        "nome_produto": "Shampoo do Cristiano Ronaldo",
+        "quantidade": 24,
+        "preco_unitario": 10.99
+    }, {
+        "id_produto": "DEF-456",
+        "nome_produto": "Óculos Ray-Ban",
+        "quantidade": 2,
+        "preco_unitario": 599.99
+    }]    
+}
