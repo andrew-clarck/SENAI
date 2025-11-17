@@ -197,6 +197,99 @@ INSERT INTO tbl_emprestimo (id_emprestimo, data_emprestimo, data_devolucao, id_e
 VALUES (3, CURDATE(), CURDATE() + INTERVAL 7 DAY, 1, 101);
 
 -- Funções de String (comandos no PDF - Aula 07)
-SELECT CONCAT(nome_autor, " (", nacionalidade, ")") -- Junta "nome_autor" com "nacionalidade"
+-- SUBSTRING(str, inicio, tamanho): Extrai um pedaço do texto (EXTRA)
+SELECT CONCAT(UPPER(nome_autor), " (", nacionalidade, ")") -- Junta "nome_autor" com "nacionalidade"   "UPPER" - Deixa todas maíusculas  LOWER(str) -Converte todo o texto para minúsculas
 AS etiqueta
 FROM tbl_autor;
+ 
+-- Funções Matemáticas (PDF - Aula 07)
+-- ROUND(numero, casas_decimais): Arredonda um número.
+-- CEIL(numero): Arredonda para o próximonúmero inteiro (teto).
+-- FLOOR(numero): Arredonda para o número inteiro anterior(piso).
+-- RAND(): Retorna um número aleatório.
+SELECT ROUND(19.99*1.05,2);
+SELECT 19.99*1.05;
+SELECT FLOOR(19.99*1.05);
+SELECT CEIL(19.99*1.05);
+SELECT RAND();
+
+/* Funções de Agregação (PDF - Aula 07) */
+-- COUNT(): Conta o número de linhas (ONDE A COLUNA NÃO FOR NULA).
+-- SUM(): Soma os valores de uma coluna.
+-- AVG(): Calcula a média dos valores de uma coluna.
+-- MIN(): Encontra o menor valor em uma coluna.
+-- MAX(): Encontra o maior valor em uma coluna.
+SELECT COUNT(*) AS total_membros
+FROM tbl_membro;
+
+SELECT * FROM tbl_membro;
+
+-- Conta apenas os que têm data de devolução
+SELECT COUNT(data_devolucao_efetiva) AS total_devolvidos
+FROM tbl_emprestimo;
+
+-- Qual o ano mais antigo do acervo?
+SELECT MIN(ano_publicacao) AS livro_mais_antigo
+FROM tbl_livro;
+
+-- E o mais novo?
+SELECT MAX(ano_publicacao) as livro_mais_novo
+FROM tbl_livro;
+
+-- Soma dos anos
+SELECT SUM(ano_publicacao) AS soma_dos_anos
+FROM tbl_livro;
+
+-- Média arredondada pra baixo dos anos
+SELECT FLOOR(AVG(ano_publicacao)) AS media_dos_anos
+FROM tbl_livro;
+
+
+-- Exercício 3
+INSERT INTO tbl_autor(nome_autor, nacionalidade)
+VALUES
+('Clarice Lispector', 'Brasileira'),
+('George Orwell', 'Britânico'),
+('Isaac Asimov', 'Russo-Americano');
+
+INSERT INTO tbl_livro(isbn, titulo_livro, ano_publicacao, editora)
+VALUES
+('978-85-325-2306-8', 'A Revolução dos Bichos', 1945, 'Companhia das Letras'),
+('978-0-00-711711-0', '1984', 1949, 'PenguinBooks'),
+('978-85-325-1997-9', 'Eu, Robô', 1950, 'Aleph');
+
+SELECT * FROM tbl_membro
+WHERE nome_membro LIKE '%Silva';
+
+SELECT * FROM tbl_livro
+WHERE ano_publicacao BETWEEN 1939 AND 1945;
+
+SELECT * FROM tbl_livro
+WHERE editora IN ('Rocco', 'Aleph');
+
+SELECT * FROM tbl_livro
+WHERE editora NOT IN ('Rocco', 'Aleph');
+
+
+-- Atividade 4
+-- String
+SELECT CONCAT(UPPER(nome_membro), " - ", telefone)
+AS CONTATO
+FROM tbl_membro;
+
+-- Agregação
+SELECT COUNT(*) FROM tbl_autor
+WHERE nacionalidade = "Brasileiro" OR nacionalidade = "Brasileira"; -- Poderia ser "WHERE nacionalidade LIKE "Brasileir_";
+
+SELECT MIN(ano_publicacao) FROM tbl_livro
+WHERE editora = "Aleph";
+
+
+INSERT INTO tbl_exemplar(id_exemplar, status_exemplar, isbn)
+VALUES (2, "Emprestado", "978-85-325-1997-9");
+
+-- Data
+INSERT INTO tbl_emprestimo(id_emprestimo, data_emprestimo, data_devolucao, data_devolucao_efetiva, id_exemplar, id_membro)
+VALUES (501, CURDATE(), CURDATE() + INTERVAL 14 DAY, NULL, 2, 101);
+
+SELECT * FROM tbl_emprestimo;
