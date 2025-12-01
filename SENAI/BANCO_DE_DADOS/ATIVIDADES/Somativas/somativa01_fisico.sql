@@ -77,6 +77,12 @@ CREATE TABLE tbl_emprestimos (
     CONSTRAINT fk_matricula_tbl_emprestimos FOREIGN KEY (matricula) REFERENCES tbl_membros(matricula)
 );
 
+ALTER TABLE tbl_livros
+ADD COLUMN genero VARCHAR(50) NOT NULL;	
+
+
+
+
 INSERT INTO tbl_emprestimos(id_exemplar, matricula, data_emprestimo, data_prevista_devolucao)
 	VALUES
     ('1', '1', '2025-10-15', '2025-10-22');
@@ -87,6 +93,3 @@ CREATE USER 'estagiario'@'localhost' IDENTIFIED BY 'mudar123';
 GRANT ALTER ON db_saber_e_cia_b.tbl_livros TO 'estagiario'@'localhost';
 
 USE db_saber_e_cia_b;
-
-ALTER TABLE tbl_livros
-ADD COLUMN genero VARCHAR(50) NOT NULL;	

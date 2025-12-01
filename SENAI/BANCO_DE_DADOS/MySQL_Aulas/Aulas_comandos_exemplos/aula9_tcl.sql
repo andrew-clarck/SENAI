@@ -15,7 +15,9 @@ START TRANSACTION;
 
 	INSERT INTO tbl_membro(id_membro, nome_membro, endereco, telefone)
 	VALUES
-	(997, 'Membro Teste', 'Rua Antônio Almeida Campos, Bairro Residencial Fabri, 52', '11-94933-3423');
+	(999, 'Membro Teste', 'Rua Antônio Almeida Campos, Bairro Residencial Fabri, 52', '11-94933-3423');
+
+COMMIT;
 
 ROLLBACK;
 

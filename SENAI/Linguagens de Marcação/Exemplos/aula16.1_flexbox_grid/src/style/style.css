@@ -108,7 +108,7 @@ a borda. */
 }
 
 /* 1.5. Centralização Total (O Santo Graal) */
-#flex-align {
+#flex-center {
   display: flex;
   justify-content: center; /* Centro Horizontal */
   align-items: center; /* Centro Vertical */
@@ -143,9 +143,24 @@ caberem e testar a quebra */
 
 /* 2.1. Grid Básico */
 #grid-basico {
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr 1fr; /* alterando linhas, configurando o layout */
 }
 
 #grid-misto {
   grid-template-columns: 200px auto 1fr;
+}
+
+#grid-repeat {
+grid-template-columns: 2fr repeat(3, 1fr);
+}
+
+#grid-minmax { 
+grid-template-columns: repeat(3, minmax(150px, 1fr))
+};
+
+#grid-implicit {
+grid-template-columns: 1fr 1fr;
+grid-auto-columns: 0px; /* Linhas extras terão 100px */
+grid-auto-flow: dense; /* Preenche buracos */
 }

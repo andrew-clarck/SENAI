@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    grid-template-areas: 
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+    gap: 15px;
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: black;
+    color: white;
+    padding: 1.5rem;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    list-style: none;
+}
+
+.menu a {
+    display: block;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
+    white-space: nowrap;
+    background-color: rgb(95, 94, 94);
+    border-radius: 5px;
+}
+
+.menu a:hover {
+    background-color: gray;
+    transition: 200ms;
+}
+
+.destaque-contato {
+    order: -1;
+}
+
+.destaque-contato a {
+    background-color: rgba(255, 166, 0, 0.781);
+}
+
+.destaque-contato a:hover {
+    background-color: orange;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: gray;
+    padding: 2rem;
+    align-self: start;
+}
+
+.content {
+    grid-area: content;
+    background-color: lightgray;
+    padding: 0.5rem;
+}
+
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    grid-area: footer;
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.btn-topo {
+    align-self: start;
+    display: block;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    background-color: gray;
+}
+
+.copyright {
+    align-self: center;
+}
+
+.grid-cards {
+    display: grid;
+
+}
