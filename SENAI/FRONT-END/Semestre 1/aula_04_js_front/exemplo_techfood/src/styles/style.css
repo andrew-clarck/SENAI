@@ -68,6 +68,9 @@
 
 /* estilização do card - conteúdo */
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 1.5px 1.5px rgb(0, 0, 0, 0.6);
@@ -100,6 +103,7 @@
 
 /* Estiliza o botão */
 .bt_pedido {
+  margin-top: auto;
   width: 100%;
   background-color: #f1c40f;
   color: white;
@@ -119,6 +123,18 @@
   border: 1px solid black;
   color: #f1c40f;
   transform: scale(1.03);
+}
+
+#popup {
+  display: none;
+  position: fixed;
+  padding: 1rem;
+  bottom: 20px;
+  right: 20px;
+  font-weight: bold;
+  background-color: green;
+  color: white;
+  border-radius: 8px;
 }
 
 /* Estilização rodapé */
