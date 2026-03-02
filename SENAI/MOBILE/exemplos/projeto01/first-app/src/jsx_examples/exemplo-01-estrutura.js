@@ -2,7 +2,7 @@
 // Arquivo Base
 // ============================================
 
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native"; // Importação de todas as funções que utilizaremos na página
 
 export default function Exemplo01() {
   return (

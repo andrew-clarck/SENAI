@@ -59,7 +59,7 @@ const botoes = document.getElementsByClassName("bt_pedido"); // Por ser classe, 
 //     });
 // } // Percorre toda a lista de botões (ou seja, todos os botões), para fazer com que todos eles ativem o script quando clicados (addEventListener faz o trabalho de identificar o clique) - Script do navegador, vamos estilizar!
 
-const popup = document.getElementById("popup"); // Cria uma variável que pega o elemento "popup" do HTML
+const popup = document.getElementById("popup"); // Cria uma variável que pega o elemento "popup" do HTML pelo seu id
 
 for (let i = 0; i < botoes.length; i++) {
   botoes[i].addEventListener("click", function () {

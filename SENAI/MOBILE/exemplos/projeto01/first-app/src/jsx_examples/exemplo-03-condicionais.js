@@ -26,7 +26,7 @@ export default function Exemplo03() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ // Responsável pela estilização do React Native
   container: {
     flex: 1,
     justifyContent: "center",
