@@ -1,7 +1,7 @@
 from machine import Pin, PWM
 from utime import sleep
 
-led_blue = PWM(Pin(16, Pin.OUT))
+led_blue = PWM(Pin(18, Pin.OUT))
 led_blue.freq(1000)
 
 while True:
