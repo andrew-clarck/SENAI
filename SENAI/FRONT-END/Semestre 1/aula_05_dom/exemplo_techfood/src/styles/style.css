@@ -1,0 +1,245 @@
+/* Reset e Configuração Universal */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Estilização do Cabeçalho/Itens do Cabeçalho */
+#cabecalho {
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+#bt_menu,
+#label_menu {
+  display: none;
+}
+
+#menu ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+#menu li {
+  display: inline-block;
+  margin: 0 10px;
+  /* Transição suave para efeito de crescimento e diminuição */
+  transition: transform 300ms ease-in-out;
+}
+
+#menu li:hover {
+  transition: 200ms;
+  transform: scale(1.1);
+}
+
+#menu a {
+  color: white;
+  background-color: #f1c40f;
+  padding: 6px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#menu a:hover {
+  transition: 300ms;
+  color: #f1c40f;
+  border-color: #f1c40f;
+  background-color: white;
+}
+
+.titulo-secao {
+  text-align: center;
+  margin-top: 40px;
+  color: #2c3e50;
+}
+
+/* Estrutura inicial GRID - Desktop */
+.vitrine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+/* estilização do card - conteúdo */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 1.5px 1.5px rgb(0, 0, 0, 0.6);
+  padding: 15px;
+  margin: 10px 0;
+  text-align: center;
+  /* Transição suave para efeito de crescimento e diminuição */
+  transition: transform 300ms ease-in-out;
+}
+
+/* Redimensionar e estilizar imagem */
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px 6px 0 0;
+}
+
+/* Aumenta o tamanho do card */
+.card:hover {
+  transition: 300ms;
+  transform: scale(1.03);
+}
+
+.preco {
+  display: block;
+  color: green;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Estiliza o botão */
+.bt_pedido {
+  margin-top: auto;
+  width: 100%;
+  background-color: #f1c40f;
+  color: white;
+  font-weight: bold;
+  padding: 6px;
+  border: none;
+  border-radius: 4px;
+  /* Transição suave para efeito de crescimento e diminuição */
+  transition: transform 300ms ease-in-out;
+}
+
+/* Resposta do botão quando mouse fica em cima */
+.bt_pedido:hover {
+  cursor: pointer;
+  transition: 300ms;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  color: #f1c40f;
+  transform: scale(1.03);
+}
+
+/* Estilização do popup do carrinho - invisível - JS irá torná-lo visível com .classList */
+#popup {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  padding: 1rem;
+  bottom: 20px;
+  right: 20px;
+  font-weight: bold;
+  background-color: green;
+  color: white;
+  border-radius: 8px;
+  transform: translateY(-20px);
+  transition: all 0.4s ease;
+}
+
+/* Classe para ser ativada por JS para tornar o elemento visível */
+#popup.visivel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Estilização rodapé */
+#rodape {
+  background-color: #2c3e50;
+  color: white;
+  padding: 30px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* MEDIAS */
+
+@media screen {
+  #cabecalho h1 {
+    /* Altera espaço entre as letras */
+    letter-spacing: 2px;
+  }
+}
+
+/* Tamanho de tela não usual */
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tela Tablet */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .vitrine-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tela Celular */
+@media screen and (max-width: 600px), (orientation: portrait) {
+  /* Menu hambuguer/responsivo */
+  #label_menu {
+    display: block;
+    font-size: 2.5rem;
+    color: #f1c40f;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  #menu ul {
+    display: none;
+  }
+
+  /* Verificando o bt_menu se está clicado e se tem irmão #menu */
+  #bt_menu:checked ~ #menu ul {
+    display: block;
+    padding: 10px 0;
+  }
+
+  .vitrine-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .desc {
+    display: none;
+  }
+
+  #menu a {
+    all: unset;
+    color: #f1c40f;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  #menu a:hover {
+    all: unset;
+    color: #f1c40f;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  #menu li:hover {
+    transform: scale(1);
+  }
+
+  #menu li {
+    display: block;
+    margin: 15px 0;
+    border-bottom: 1px solid #f1c40f;
+    padding-bottom: 10px;
+  }
+}
+
+@media not screen {
+  #menu,
+  .bt_pedido,
+  #label_menu,
+  #bt_menu {
+    display: none;
+  }
+}

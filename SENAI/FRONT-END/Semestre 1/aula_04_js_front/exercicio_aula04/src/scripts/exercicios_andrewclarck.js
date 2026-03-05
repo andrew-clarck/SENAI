@@ -1,7 +1,7 @@
 // EXER 1
 ///////////////////////
-// const nome = prompt("Olá, qual é o seu nome?")
-// const sobrenome = prompt("Qual o seu sobrenome?")
+// const nome = prompt("Olá, qual é o seu nome?") // O trim poderia ser usado aqui
+// const sobrenome = prompt("Qual o seu sobrenome?") // O trim poderia ser usado aqui
 
 // const nomeCompleto = nome.trim().concat(" ", sobrenome.trim()).toLowerCase()
 // const contagemNomeCompleto = nome.trim().length + sobrenome.trim().length
@@ -20,9 +20,12 @@
 ///////////////////////
 // EXER 3
 ///////////////////////
-// const valor = prompt("Olá, qual foi o valor total da compra?")
+// const valor = prompt("Olá, qual foi o valor total da compra?");
 
-// const cupom = confirm("Você possui um cupom de desconto?")
+// const cupom = confirm("Você possui um cupom de desconto? Se sim, clique em Ok");
+
+// const resposta = valor > 150 || cupom ? "Frete Grátis Liberado" : "Frete pago";
+// console.log(resposta); // Código mais enxuto
 
 // if (valor > 150 || cupom) {
 //     console.log("Frete Grátis Liberado")
@@ -40,29 +43,31 @@
 // } else {
 //     alert(`Que pena, o número sorteado foi ${numeroSorteado}`)
 // }
+
+// // const premio = numero == numeroSorteado ? "Parábens! Você ganhou um brinde!" : `Que pena, o número sorteado foi ${numeroSorteado}`
+// // alert(premio)
 ///////////////////////
 // EXER 5
 ///////////////////////
 class Veiculo {
-    constructor(modelo, marca, ano) {
-        this.modelo = modelo,
-        this.marca = marca,
-        this.ano = ano
-    }
+  constructor(modelo, marca, ano) {
+    ((this.modelo = modelo), (this.marca = marca), (this.ano = ano));
+  }
 
-    idadeVeiculo(anoAtual) {
-        const idade = anoAtual - this.ano
-        return idade
-    }
+  idadeVeiculo(anoAtual) {
+    const idade = anoAtual - this.ano;
+    return idade;
+  }
 }
 
-const veiculo1 = new Veiculo("Civic", "Honda", 2018)
+const veiculo1 = new Veiculo("Civic", "Honda", 2018);
 
-
-const anoAtualUsuario = prompt("Olá, qual é o ano atual?") // O exercício requer que o usuário digite o ano, portanto não usei Date()
+const anoAtualUsuario = prompt("Olá, qual é o ano atual?"); // O exercício requer que o usuário digite o ano, portanto não usei Date()
 
 // const anoAtual = new Date()
 
-// alert(`O veículo ${veiculo1.marca} ${veiculo1.modelo} ${veiculo1.ano} possui ${veiculo1.idadeVeiculo(anoAtual.getFullYear())} anos.`) - Versão utilizando a função Date()
+// alert(`O veículo ${veiculo1.marca} ${veiculo1.modelo} ${veiculo1.ano} possui ${veiculo1.idadeVeiculo(anoAtual.getFullYear())} anos.`) // - Versão utilizando a função Date()
 
-alert(`O veículo ${veiculo1.marca} ${veiculo1.modelo} ${veiculo1.ano} possui ${veiculo1.idadeVeiculo(anoAtualUsuario)} anos.`)
+alert(
+  `O veículo ${veiculo1.marca} ${veiculo1.modelo} ${veiculo1.ano} possui ${veiculo1.idadeVeiculo(anoAtualUsuario)} anos.`,
+);
