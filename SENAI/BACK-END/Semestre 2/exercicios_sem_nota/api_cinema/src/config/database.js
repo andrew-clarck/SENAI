@@ -1,6 +1,6 @@
 const mysql = require("mysql2");
 
-require("dotenv").config();
+require("dotenv").config(); // Pega as credenciais que estão no .env
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -11,6 +11,6 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
-});
+}); // Criação da conexão entre o JS e o Database
 
 module.exports = pool;
