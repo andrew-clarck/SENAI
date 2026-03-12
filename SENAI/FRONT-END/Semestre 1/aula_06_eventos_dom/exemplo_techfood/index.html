@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exemplo TechFood - Grid + Media Query</title>
     <link rel="stylesheet" href="./src/styles/style.css" />
-    <script src="./src/scripts/main.js" defer></script>
+    <script src="./src/scripts/aula06.js" defer></script>
   </head>
   <body>
     <header id="cabecalho">
@@ -36,7 +36,14 @@
             />
             <h3>Lasanha à bolonhesa</h3>
             <p class="desc">Massa artesanal e molho especial.</p>
-            <span class="preco">R$ 45,00</span>
+
+            <!--Criação de classe para quantidade de lasanhas no pedido - Aula 06 - Eventos de DOM-->
+            <div class="quantidade">
+              <label for="qtd-lasanha"></label>
+              <input type="number" id="qtd-lasanha" value="1" min="1" />
+            </div>
+
+            <span class="preco" id="preco-lasanha">R$ 45,00</span>
             <button class="bt_pedido">Pedir agora</button>
           </article>
 
