@@ -17,6 +17,9 @@ app.get("/", (req, res) => {
   res.send("API CINEMA");
 });
 
+////////////////////////////////////////////////////////
+// Filmes
+
 app.get("/filmes", async (req, res) => {
   // pool.query("SELECT * FROM filme", (err, results) => {
   //   res.json(results); // Sobe para o SQL o comando SELECT e pega as informações em JSON
@@ -224,4 +227,197 @@ app.delete("/filmes/:id", async (req, res) => {
     });
   }
 });
+
+///////////////////////////////////////////////
+// SALAS
+app.get("/salas", async (req, res) => {
+  try {
+    const salas = await queryAsync("SELECT * FROM sala");
+
+    res.status(200).json({
+      sucesso: true,
+      dados: salas,
+      total: salas.length,
+    });
+  } catch (erro) {
+    console.error(`Erro ao encontrar salas: ${erro}`);
+    res.status(500).json({
+      sucesso: false,
+      mensagem: "Erro ao encontrar salas.",
+      erro: erro.message,
+    });
+  }
+});
+
+app.get("/salas/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    if (!id || isNaN(id)) {
+      return res.status(400).json({
+        sucesso: false,
+        mensagem: "ID de sala inválido.",
+      });
+    }
+
+    const sala = await queryAsync("SELECT * FROM sala WHERE id = ?", [id]);
+
+    if (sala.length === 0) {
+      return res.status(404).json({
+        sucesso: false,
+        mensagem: "Sala não encontrada.",
+      });
+    }
+
+    res.status(200).json({
+      sucesso: true,
+      dados: sala[0],
+    });
+  } catch (erro) {
+    console.error(`Erro ao encontrar a sala: ${erro}`);
+    res.status(500).json({
+      sucesso: false,
+      mensagem: "Erro ao encontrar sala.",
+      erro: erro.message,
+    });
+  }
+});
+
+app.post("/salas", async (req, res) => {
+  const { nome, capacidade } = req.body;
+
+  try {
+    if (!nome || !capacidade) {
+      return res.status(400).json({
+        sucesso: false,
+        mensagem: "Os campos nome e capacidade devem ser preenchidos.",
+      });
+    }
+
+    if (typeof capacidade !== "number" || capacidade <= 0) {
+      return res.status(400).json({
+        sucesso: false,
+        mensagem: "Capacidade deve ser um número positivo.",
+      });
+    }
+
+    const novaSala = {
+      nome: nome.trim(),
+      capacidade,
+    };
+
+    const resultado = await queryAsync("INSERT INTO sala SET ?", [novaSala]);
+
+    res.status(201).json({
+      sucesso: true,
+      mensagem: "Filme cadastrado com sucesso.",
+      id: resultado.insertId,
+    });
+  } catch (erro) {
+    console.error(`Erro ao salvar sala: ${erro}`);
+    res.status(500).json({
+      sucesso: false,
+      mensagem: "Erro ao salvar sala.",
+      erro: erro.message,
+    });
+  }
+});
+
+app.put("/salas/:id", async (req, res) => {
+  const { id } = req.params;
+  const { nome, capacidade } = req.body;
+
+  try {
+    if (!id || isNaN(id)) {
+      return res.status(400).json({
+        sucesso: false,
+        mensagem: "ID de sala inválido.",
+      });
+    }
+
+    const salaExiste = await queryAsync("SELECT * FROM sala WHERE id = ?", [
+      id,
+    ]);
+
+    if (salaExiste.length === 0) {
+      return res.status(404).json({
+        sucesso: false,
+        mensagem: "Sala não encontrada",
+      });
+    }
+
+    const salaAtualizada = {};
+
+    if (nome !== undefined) salaAtualizada.nome = nome.trim();
+    if (capacidade !== undefined) {
+      if (typeof capacidade !== "number" || capacidade <= 0) {
+        return res.status(400).json({
+          sucesso: false,
+          mensagem: "Capacidade deve ser um número positivo.",
+        });
+      }
+      salaAtualizada.capacidade = capacidade;
+    }
+
+    if (Object.keys(salaAtualizada).length === 0) {
+      return res.status(400).json({
+        sucesso: false,
+        mensagem: "Nenhum campo para atualizar",
+      });
+    }
+
+    await queryAsync("UPDATE sala SET ? WHERE id = ?", [salaAtualizada, id]);
+
+    res.status(200).json({
+      sucesso: true,
+      mensagem: "Sala atualizada com sucesso.",
+    });
+  } catch (erro) {
+    console.error(`Erro ao atualizar sala: ${erro}`);
+    res.status(500).json({
+      sucesso: false,
+      mensagem: "Erro ao salvar sala.",
+      erro: erro.message,
+    });
+  }
+});
+
+app.delete("/salas/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    if (!id || isNaN(id)) {
+      return res.status(400).json({
+        sucesso: false,
+        mensagem: "ID de sala inválido.",
+      });
+    }
+
+    const salaExiste = await queryAsync("SELECT * FROM sala WHERE id = ?", [
+      id,
+    ]);
+
+    if (salaExiste.length === 0) {
+      return res.status(404).json({
+        sucesso: false,
+        mensagem: "Sala não encontrada.",
+      });
+    }
+
+    await queryAsync("DELETE FROM sala WHERE id = ?", [id]);
+
+    res.status(200).json({
+      sucesso: true,
+      mensagem: "Filme apagado com sucesso.",
+    });
+  } catch (erro) {
+    console.error(`Erro ao apagar sala: ${erro}`);
+    res.status(500).json({
+      sucesso: false,
+      mensagem: "Erro ao apagar sala.",
+      erro: erro.message,
+    });
+  }
+});
+
 module.exports = app; // Exporta o app
