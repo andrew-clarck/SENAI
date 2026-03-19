@@ -48,3 +48,4 @@ const imagemLasanha = document.querySelector("#foto-destaque");
 const cardLasanha = document.querySelector("#card-lasanha");
 
 cardLasanha.classList.add("em-promocao");
+
