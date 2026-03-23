@@ -15,6 +15,20 @@ botoes.forEach((botao) => {
   })
 });
 
+// PREÇO DINÂMICO
+const inputQtd = document.querySelector("#qtd-lasanha");
+const precoTexto = document.querySelector("#preco-lasanha");
+
+if (inputQtd && precoTexto) {
+  inputQtd.addEventListener("input", function () {
+    const precoUnitario = 45.0;
+    const total = (Number(inputQtd.value) * precoUnitario).toFixed(2);
+    precoTexto.textContent = `R$ ${total}`;
+
+    precoTexto.style.color = total > 150 ? "#c0392b" : total >= 90 ? "#e67e22" : "green";
+  });
+}
+
 // Utilizando o forEach, é específico para a class botão, é melhor buscar o evento direto pela class
 botoes.forEach((botao) => {
   botao.addEventListener("click", () => {
