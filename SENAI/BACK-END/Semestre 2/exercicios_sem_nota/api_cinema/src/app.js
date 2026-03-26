@@ -419,5 +419,124 @@ app.delete("/salas/:id", async (req, res) => {
     });
   }
 });
+//////////////////////////////////
+// Sessão
+
+app.get("/sessoes", async (req, res) => {
+  try {
+    const sessoes = await queryAsync("SELECT * FROM sessao");
+
+    res.status(200).json({
+      sucesso: true,
+      dados: sessoes,
+      total: sessoes.length,
+    });
+  } catch (erro) {
+    console.error(`Erro ao encontrar sessões: ${erro}`);
+    res.status(500).json({
+      sucesso: false,
+      mensagem: "Erro ao encontrar sessões.",
+      erro: erro.message,
+    });
+  }
+});
+
+app.get("/sessoes/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    if (!id || isNaN(id)) {
+      return res.status(400).json({
+        sucesso: false,
+        mensagem: "ID de sessão inválido.",
+      });
+    }
+
+    const sessao = await queryAsync("SELECT * FROM sessao WHERE id = ?", [id]);
+
+    if (sessao.length === 0) {
+      return res.status(404).json({
+        sucesso: false,
+        mensagem: "Sessão não encontrada.",
+      });
+    }
+
+    res.status(200).json({
+      sucesso: true,
+      dados: sessao[0],
+    });
+  } catch (erro) {
+    console.error(`Erro ao encontrar a sessão: ${erro}`);
+    res.status(500).json({
+      sucesso: false,
+      mensagem: "Erro ao encontrar sessão.",
+      erro: erro.message,
+    });
+  }
+});
+
+app.post("/sessoes", async (req, res) => {
+  const { filme_id, sala_id, data_hora, preco } = req.body;
+
+  try {
+    if (!filme_id || !sala_id || data_hora || preco) {
+      return res.status(400).json({
+        sucesso: false,
+        mensagem:
+          "Os campos filme_id, sala_id, data_hora e preco devem estar preenchidos",
+      });
+    }
+    if (isNaN(filme_id) || isNaN(sala_id) || isNaN(preco)) {
+      return res.status(400).json({
+        sucesso: false,
+        mensagem: "Os campos filme_id, sala_id e preco devem ser números",
+      });
+    }
+
+    const filmeExiste = await queryAsync("SELECT * FROM filme WHERE id = ?", [
+      filme_id,
+    ]);
+    if (filmeExiste.length === 0) {
+      return res.status(404).json({
+        sucesso: false,
+        mensagem: "Filme não encontrado",
+      });
+    }
+
+    const salaExiste = await queryAsync("SELECT * FROM sala WHERE id = ?", [
+      sala_id,
+    ]);
+    if (salaExiste.length === 0) {
+      return res.status(404).json({
+        sucesso: false,
+        mensagem: "Sala não encontrada",
+      });
+    }
+
+    const novaSessao = {
+      filme_id: filme_id,
+      sala_id: sala_id,
+      data_hora,
+      preco: preco,
+    };
+
+    const resultado = await queryAsync("INSERT INTO sessao SET ?", [
+      novaSessao,
+    ]);
+
+    res.status(201).json({
+      sucesso: true,
+      mensagem: "Sessão criada com sucesso.",
+      id: resultado.insertId,
+    });
+  } catch (erro) {
+    console.error(`Erro ao criar a sessão: ${erro}`);
+    res.status(500).json({
+      sucesso: false,
+      mensagem: "Erro ao criar sessão.",
+      erro: erro.message,
+    });
+  }
+});
 
 module.exports = app; // Exporta o app
