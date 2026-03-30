@@ -49,7 +49,7 @@ while True:
         # Luz piscando
         # Detecta clique do botão (1 → 0)
         if estado1 == 0 and ultimo_estado1 == 1:
-            indice = (indice + 1) % 3 # Muda o índice, o % 3 é o resto da divisão, desse jeito, quando indice + 1 for 3, o indice volta para 0, logo, o vermelho
+            indice = (indice + 1) % 3
             sleep(0.2)
     
         ultimo_estado1 = estado1
