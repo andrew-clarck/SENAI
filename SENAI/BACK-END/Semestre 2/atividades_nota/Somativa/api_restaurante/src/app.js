@@ -85,7 +85,7 @@ app.get("/produtos/id", async (req, res) => {
 app.post("/produtos", async (req, res) => {
   const { nome, descricao, preco, categoria, disponivel } = req.body;
   try {
-    if ((!nome, !descricao, !preco, !categoria, !disponivel)) {
+    if (!nome || !descricao || !preco || !categoria || !disponivel) {
       return res.status(400).json({
         sucesso: false,
         mensagem: "Todos os campos são obrigatórios.",
@@ -121,7 +121,7 @@ app.post("/produtos", async (req, res) => {
     res.status(201).json({
       sucesso: true,
       mensagem: "Produto criado com sucesso.",
-      id: resultado.insertId(),
+      id: resultado.insertId,
     });
   } catch (erro) {
     res.status(500).json({

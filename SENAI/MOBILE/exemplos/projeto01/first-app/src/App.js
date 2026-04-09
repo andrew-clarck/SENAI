@@ -1,12 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import AtividadeSomativa01 from "./somativa_pratica/exer12_somativa_andrewclarck";
-import AtividadeSomativa02 from "./somativa_pratica/exer13_somativa_andrewclarck";
+import ExemploState from "./jsx_hooks_examples/usestate_example";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <AtividadeSomativa02 />
+      <ExemploState />
     </View>
   );
 }
