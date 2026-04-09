@@ -13,6 +13,33 @@ const queryAsync = (sql, values = []) => {
   });
 };
 
+function validarId(id) {
+  if (!id || isNaN(id)) {
+    return res.status(400).json({
+      sucesso: false,
+      mensagem: "ID inválido",
+    });
+  }
+}
+
+function validarTipoDado(dado, tipo) {
+  if (typeof dado !== tipo) {
+    return res.status(400).json({
+      sucesso: false,
+      mensagem: `${dado} deve ser ${tipo}`,
+    });
+  }
+}
+
+function validarPreco(preco) {
+  if (typeof preco !== "number" || preco < 0) {
+    return res.status(400).json({
+      sucesso: false,
+      mensagem: `${preco} deve ser um número positivo`,
+    });
+  }
+}
+
 app.get("/", (req, res) => {
   res.send("API SABOR DIGITAL");
 });
@@ -40,12 +67,7 @@ app.get("/produtos/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    if (!id || isNaN(id)) {
-      return res.status(400).json({
-        sucesso: false,
-        mensagem: "ID inválido",
-      });
-    }
+    validarId(id);
 
     const produto = await queryAsync("SELECT * FROM produto WHERE id = ?", [
       id,
@@ -83,12 +105,9 @@ app.post("/produtos", async (req, res) => {
           "Os campos nome, descricao, preco e disponivel devem ser preenchidos.",
       });
     }
-    if (typeof preco !== "number" || preco <= 0) {
-      return res.status(400).json({
-        sucesso: false,
-        mensagem: "preco deve ser um número positivo.",
-      });
-    }
+
+    validarTipoDado(preco, "number");
+
     if (typeof disponivel !== "boolean") {
       return res.status(400).json({
         sucesso: false,
