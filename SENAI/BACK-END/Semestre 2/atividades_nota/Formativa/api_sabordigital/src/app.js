@@ -13,31 +13,82 @@ const queryAsync = (sql, values = []) => {
   });
 };
 
-function validarId(id) {
-  if (!id || isNaN(id)) {
-    return res.status(400).json({
-      sucesso: false,
-      mensagem: "ID inválido",
-    });
+//ARRUMAR AS OUTRAS FUNÇÕES E CÓDIGOS INTERNOS COM BASE EM validarId e app.get com id
+function validarId(id, res) {
+  if (!id || !Number.isInteger(Number(id))) {// O !Number.isInteger verifica se NÃO é um número inteiro (o "!" inverte o resultado)
+
+    // Number(id) para que não aceite valores como '123abc' ou '  '
+    mensagemValidacaoId(res);
+    return true;
   }
+  return false;
 }
 
-function validarTipoDado(dado, tipo) {
+function mensagemValidacaoId(res) {
+  res.status(400).json({
+    sucesso: false,
+    mensagem: "ID inválido",
+  });
+}
+
+function validarTipoDado(campo, dado, tipo, res) {
   if (typeof dado !== tipo) {
-    return res.status(400).json({
-      sucesso: false,
-      mensagem: `${dado} deve ser ${tipo}`,
-    });
+    mensagemValidacaoTipoDado(campo, tipo, res);
+    return true;
   }
+  return false;
 }
 
-function validarPreco(preco) {
+function mensagemValidacaoTipoDado(campo, tipo, res) {
+  res.status(400).json({
+    sucesso: false,
+    mensagem: `O campo '${campo}' deve ser do tipo ${tipo}`,
+  });
+}
+
+function validarPreco(preco, res) {
   if (typeof preco !== "number" || preco < 0) {
-    return res.status(400).json({
-      sucesso: false,
-      mensagem: `${preco} deve ser um número positivo`,
-    });
+    mensagemValidacaoPreco(res);
+    return true;
   }
+  return false;
+}
+
+function mensagemValidacaoPreco(res) {
+  res.status(400).json({
+    sucesso: false,
+    mensagem: `O campo 'preco' deve ser um número positivo`,
+  });
+}
+
+function validarTextoObrigatorio(campo, valor, res) {
+  if (typeof valor !== "string" || valor.trim() === "") {
+    mensagemValidacaoTextoObrigatorio(campo, res);
+    return true;
+  }
+  return false;
+}
+
+function mensagemValidacaoTextoObrigatorio(campo, res) {
+  res.status(400).json({
+    sucesso: false,
+    mensagem: `O campo '${campo}' não pode ser vazio`,
+  });
+}
+
+function validarExistencia(entidade, nome, res) {
+  if (entidade.length === 0) {
+    mensagemValidacaoExistencia(nome, res);
+    return true;
+  }
+  return false;
+}
+
+function mensagemValidacaoExistencia(nome, res) {
+  res.status(404).json({
+    sucesso: false,
+    mensagem: `${nome} não encontrado(a)`,
+  });
 }
 
 app.get("/", (req, res) => {
@@ -67,18 +118,13 @@ app.get("/produtos/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    validarId(id);
+    if (validarId(id, res)) return;
 
     const produto = await queryAsync("SELECT * FROM produto WHERE id = ?", [
       id,
     ]);
 
-    if (produto.length === 0) {
-      return res.status(404).json({
-        sucesso: false,
-        mensagem: "Filme não encontrado",
-      });
-    }
+    if (validarExistencia(produto, "Produto", res)) return;
 
     res.status(200).json({
       sucesso: true,
@@ -98,7 +144,14 @@ app.post("/produtos", async (req, res) => {
   const { nome, descricao, preco, disponivel } = req.body;
 
   try {
-    if (!nome || !descricao || !preco || disponivel === null) {
+    if (
+      !nome ||
+      nome.trim() === "" || // validação com .trim() para não aceitar valor "   "
+      !descricao ||
+      descricao.trim() === "" ||
+      preco === undefined ||
+      disponivel === undefined
+    ) {
       return res.status(400).json({
         sucesso: false,
         mensagem:
@@ -106,14 +159,9 @@ app.post("/produtos", async (req, res) => {
       });
     }
 
-    validarTipoDado(preco, "number");
+    if (validarPreco(preco, res)) return;
 
-    if (typeof disponivel !== "boolean") {
-      return res.status(400).json({
-        sucesso: false,
-        mensagem: "disponivel deve ser true ou false.",
-      });
-    }
+    if (validarTipoDado("disponivel", disponivel, "boolean", res)) return;
 
     const novoProduto = {
       nome: nome.trim(),
@@ -146,47 +194,34 @@ app.put("/produtos/:id", async (req, res) => {
   const { nome, descricao, preco, disponivel } = req.body;
 
   try {
-    if (!id || isNaN(id)) {
-      return res.status(400).json({
-        sucesso: false,
-        mensagem: "ID de produto inválido",
-      });
-    }
+    if (validarId(id, res)) return;
 
     const produtoExiste = await queryAsync(
       "SELECT * FROM produto WHERE id = ?",
       [id],
     );
-    if (produtoExiste.length === 0) {
-      return res.status(404).json({
-        sucesso: false,
-        mensagem: "Produto não encontrado.",
-      });
-    }
+
+    if (validarExistencia(produtoExiste, "Produto", res)) return;
 
     const produtoAtualizado = {};
 
-    if (nome !== undefined) produtoAtualizado.nome = nome.trim();
+    if (nome !== undefined) {
+      if (validarTextoObrigatorio("nome", nome, res)) return;
+      produtoAtualizado.nome = nome.trim();
+    }
 
-    if (descricao !== undefined) produtoAtualizado.descricao = descricao.trim();
+    if (descricao !== undefined) {
+      if (validarTextoObrigatorio("descricao", descricao, res)) return;
+      produtoAtualizado.descricao = descricao.trim();
+    }
 
     if (preco !== undefined) {
-      if (typeof preco !== "number" || preco <= 0) {
-        return res.status(400).json({
-          sucesso: false,
-          mensagem: "preco deve ser um número positivo",
-        });
-      }
+      if (validarPreco(preco, res)) return;
       produtoAtualizado.preco = preco;
     }
 
     if (disponivel !== undefined) {
-      if (typeof disponivel !== "boolean") {
-        return res.status(400).json({
-          sucesso: false,
-          mensagem: "disponivel deve ser true ou false",
-        });
-      }
+      if (validarTipoDado("disponivel", disponivel, "boolean", res)) return;
       produtoAtualizado.disponivel = disponivel;
     }
 
@@ -220,23 +255,14 @@ app.delete("/produtos/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    if (!id || isNaN(id)) {
-      return res.status(400).json({
-        sucesso: false,
-        mensagem: "ID de produto inválido",
-      });
-    }
+    if (validarId(id, res)) return;
 
     const produtoExiste = await queryAsync(
       "SELECT * FROM produto WHERE id = ?",
       [id],
     );
-    if (produtoExiste.length === 0) {
-      return res.status(404).json({
-        sucesso: false,
-        mensagem: "Produto não encontrado.",
-      });
-    }
+
+    if (validarExistencia(produtoExiste, "Produto", res)) return;
 
     await queryAsync("DELETE FROM produto WHERE id = ?", [id]);
 
@@ -244,7 +270,14 @@ app.delete("/produtos/:id", async (req, res) => {
       sucesso: true,
       mensagem: "Produto apagado com sucesso.",
     });
-  } catch (erro) {}
+  } catch (erro) {
+    console.error("Erro ao deletar produto:", erro);
+    res.status(500).json({
+      sucesso: false,
+      mensagem: "Erro ao deletar produto",
+      erro: erro.message,
+    });
+  }
 });
 
 module.exports = app;
