@@ -1,11 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import ExemploState from "./jsx_hooks_examples/usestate_example";
+import ContadorExample from "./hooks/useState_example";
+import TelaDeLogin from "./hooks/useRef_example";
+import TelaMoeda from "./hooks/useEffect_example";
+import Recados from "./hooks/recados_exercise";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <ExemploState />
+      <Recados />
     </View>
   );
 }
