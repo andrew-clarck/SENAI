@@ -165,8 +165,9 @@ app.put("/salas/:id", async (req, res) => {
 
     if (dados !== undefined) salaAtualizada.dados = dados;
 
-    if (validarAtualizacaoEntidade(salaAtualizada, res))
-      await queryAsync("UPDATE sala SET ? WHERE id = ?", [salaAtualizada, id]);
+    if (validarAtualizacaoEntidade(salaAtualizada, res)) return;
+
+    await queryAsync("UPDATE sala SET ? WHERE id = ?", [salaAtualizada, id]);
 
     res.status(200).json({
       sucesso: true,

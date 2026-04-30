@@ -15,9 +15,8 @@ const queryAsync = (sql, values = []) => {
 
 //ARRUMAR AS OUTRAS FUNÇÕES E CÓDIGOS INTERNOS COM BASE EM validarId e app.get com id
 function validarId(id, res) {
-  if (!id || !Number.isInteger(Number(id))) {// O !Number.isInteger verifica se NÃO é um número inteiro (o "!" inverte o resultado)
+  if (!id || !Number.isInteger(Number(id))) {// O !Number.isInteger verifica se NÃO é um número inteiro (o "!" inverte o resultado) - Nmber(id) para não aceitar "123abc" || "  "
 
-    // Number(id) para que não aceite valores como '123abc' ou '  '
     mensagemValidacaoId(res);
     return true;
   }
