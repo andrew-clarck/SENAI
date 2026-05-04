@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - IoT</title>
+  </head>
+  <body>
+    <header id="header">
+      <h1>Sistema de Incêndio IoT</h1>
+    </header>
+    <main id="main">
+      <article id="status-geral">
+        <h2>STATUS DO SISTEMA</h2>
+        <h3>Seguro/Atenção/Incêndio</h3>
+        <!--Alterar com script, incluindo estilo do article-->
+        <h3 id="data-hora">Data/Hora</h3>
+        <!--Script-->
+        <h3 id="status-conexao">Status da conexão: Online/Offline</h3>
+      </article>
+      <article id="painel-principal">
+        <section class="card-dados">
+          <h2>TEMPERATURA</h2>
+          <h4>Sensor: Ativado/Desativado</h4>
+          <h3>ºC</h3>
+          <!--Script - integração com IoT-->
+          <h3>Seguro/Atenção/Crítico</h3>
+          <!--Script-->
+        </section>
+        <section class="card-dados">
+          <h2>UMIDADE</h2>
+          <h4>Sensor: Ativado/Desativado</h4>
+          <h3>%</h3>
+          <!--Script - integração com IoT-->
+          <h3>Seguro/Atenção/Crítico</h3>
+          <!--Script-->
+        </section>
+        <section class="card-dados">
+          <h2>IDENTIFICADOR DE FOGO</h2>
+          <h4>Sensor: Ativado/Desativado</h4>
+          <h3>Nada detectado/Incêndio detectado</h3>
+          <!--Script - integração com IoT-->
+        </section>
+        <section class="card-dados">
+          <h2>ALARME</h2>
+          <h4>Status: Ativado/Desativado</h4>
+          <h3>Estado: Atenção/Crítico</h3>
+        </section>
+      </article>
+      <article id="area-alerta">
+        <h2>INCÊNDIO DETECTADO</h2>
+      </article>
+      <!--Exibir apenas em situação de incêndio-->
+      <article id="controle-sistema">
+        <h2>ÁREA DE CONTROLE</h2>
+        <button class="btn-controle">Ligar/Desligar Sistema</button>
+        <button class="btn-controle">Testar Buzzer</button>
+        <button class="btn-controle">Testar Sprinkler</button>
+      </article>
+    </main>
+    <footer id="footer"></footer>
+  </body>
+</html>
