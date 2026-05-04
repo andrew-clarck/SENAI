@@ -1,14 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import ContadorExample from "./hooks/useState_example";
-import TelaDeLogin from "./hooks/useRef_example";
-import TelaMoeda from "./hooks/useEffect_example";
-import Recados from "./hooks/recados_exercise";
+import FormularioExemplos from "./text_input/formulario";
+import FlatListExemplo from "./flat_list/flatlist_example";
+import ListaCompras from "./flat_list/exer_lista_compras";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Recados />
+      <ListaCompras />
     </View>
   );
 }
