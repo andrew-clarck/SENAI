@@ -25,8 +25,48 @@ function renderizarPedidos() {
   lista.innerHTML = "";
   let total = 0;
 
-  const textoSpan = document.createElement("span");
-  textoSpan.innerHTML = ``;
+  pedidos.forEach((pedido, indice) => {
+    const li = document.createElement("li");
+    li.classList.add("item-pedido");
 
-  // Continua...
+    const textoSpan = document.createElement("span");
+    textoSpan.innerHTML = `<strong>${pedido.nome}</strong> - ${pedido.qtd} x R$ ${pedido.preco.toFixed(2).replace(".", ",")} = <span class="subtotal-item">R$ ${pedido.subtotal.toFixed(2).replace(".", ",")}`;
+
+    // CRIANDO BOTÃO PARA REMOVER PRATO
+    const btnRemover = document.createElement("button");
+    btnRemover.textContent = "❌";
+    btnRemover.classList.add("btn-remover");
+
+    // Alterar - Mudou
+    btnRemover.addEventListener("click", () => {
+      const lista = JSON.parse(
+        localStorage.getItem("techfood_pedidos") || "[]",
+      );
+
+      lista.splice(indice, 1);
+
+      localStorage.setItem("techfood_pedidos");
+      renderizarPedidos();
+    });
+
+    li.appendChild(textoSpan);
+    li.appendChild(btnRemover);
+    listaResumo.appendChild(li);
+    total += pedido.subtotal;
+
+    const totalFmt = `R$ ${total.toFixed(2).replace(".", ",")}`;
+
+    // CONTINUA...
+  });
+}
+
+function configurarLimparPedidos() {
+  const btnLimpar = document.querySelector("#btn-limpar-pedidos");
+
+  if (!btnLimpar) return;
+
+  btnLimpar.addEventListener("click", () => {
+    localStorage.removeItem("techfood_pedidos");
+    renderizarPedidos();
+  });
 }
