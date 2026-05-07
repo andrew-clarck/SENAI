@@ -6,26 +6,46 @@ class ProdutoRepository {
     return listaProdutos;
   }
 
-  async buscarProdutoPorId(id){
-    const mostrarProduto = await pool.query("SELECT * FROM produto WHERE id = ?", [id])
-    return mostrarProduto[0]
+  async buscarProdutoPorId(id) {
+    const mostrarProduto = await pool.query(
+      "SELECT * FROM produto WHERE id = ?",
+      [id],
+    );
+    return mostrarProduto[0];
   }
 
-  async cadastrarProduto(dadosDoProduto){
-    const resultadoCadastro = await pool.query("INSERT INTO produto SET ?", [dadosDoProduto])
-    return resultadoCadastro.insertId
+  async cadastrarProduto(dadosDoProduto) {
+    const resultadoCadastro = await pool.query("INSERT INTO produto SET ?", [
+      dadosDoProduto,
+    ]);
+    return resultadoCadastro.insertId;
   }
 
-  async atualizarProduto(id, dadosDoProduto){
-    const produtoAtualizado = await pool.query("UPDATE produto SET ? WHERE id = ?", [dadosDoProduto, id])
-    return produtoAtualizado
+  async atualizarProduto(id, dadosDoProduto) {
+    const camposProduto = [];
+    const dadoProduto = [];
+
+    for (const [key, value] of Object.entries(dadosDoProduto)) {
+      camposProduto.push(`${key} = ?`);
+      dadoProduto.push(value);
+
+      if (camposProduto.length === 0) return null;
+
+      dadoProduto.push(id);
+
+      const query = `UPDATE produto SET ${camposProduto.join(",")} WHERE id = ?`;
+
+      const resultado = await pool.query(query, dadoProduto);
+
+      return resultado.affectedRows;
+    }
   }
 
   async apagarProduto(id) {
-    await pool.query("DELETE FROM produto WHERE id = ?", [id])
+    await pool.query("DELETE FROM produto WHERE id = ?", [id]);
 
-    return true
+    return true;
   }
 }
 
-module.exports = new ProdutoRepository()
+module.exports = new ProdutoRepository();
