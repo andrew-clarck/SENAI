@@ -59,7 +59,7 @@ function inicializarVitrine() {
       const card = clicado.parentElement; // Card do produto
       const nomePrato = card.querySelector("h3").textContent; // Nome do prato
       const quantidade = Number(card.querySelector(".qtd-valor").textContent); // Quantidade
-      const preco = parseFloat(card.querySelector(".preco").getAttribute("data-")); // Preço exibido - pega o atributo data- da tag, facilitando a separação do R$, exemplo: <span class="preco" id="preco-lasanha" data-preco="45.00">R$ 45,00</span>
+      const preco = parseFloat(card.querySelector(".preco").getAttribute("data-preco")); // Preço exibido - pega o atributo data- da tag, facilitando a separação do R$, exemplo: <span class="preco" id="preco-lasanha" data-preco="45.00">R$ 45,00</span>
 
       // Feedback visual ao clicar
       clicado.textContent = "✓ Adicionado"; // Muda texto

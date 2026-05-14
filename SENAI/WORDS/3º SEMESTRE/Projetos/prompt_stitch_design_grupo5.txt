@@ -1,0 +1,218 @@
+Prompt:
+Você é um designer sênior de UX/UI especializado em sistemas web corporativos, ERPs e dashboards de estoque. Crie o sistema inteiro do zero para a empresa Nômade, fabricante de tênis, com foco em uma experiência profissional, limpa, moderna, organizada e visualmente impressionante.
+
+O projeto deve ser baseado somente nas funcionalidades descritas abaixo, sem usar nenhuma referência visual anterior. A proposta é criar uma interface digna de um sistema corporativo premium, com aparência refinada, clara e extremamente bem resolvida.
+
+## Objetivo do sistema
+
+A Nômade precisa de um sistema de gestão e controle de estoque que permita:
+
+* login de usuários;
+* cadastro de produtos, matérias-primas e insumos;
+* controle de entrada no estoque;
+* controle de saída no estoque;
+* registro de devoluções;
+* consulta de estoque;
+* geração de relatórios e indicadores;
+* alertas de estoque baixo e excesso de estoque;
+* visualização gráfica de movimentações e itens mais relevantes;
+* organização por lote, fornecedor, validade e outros dados de rastreabilidade.
+
+O sistema também deve permitir gestão de usuários com diferentes níveis de acesso, de acordo com a hierarquia definida no projeto.
+
+## Direção visual
+
+Quero um design com estética corporativa e industrial, usando:
+
+* paleta neutra como base;
+* azul industrial como cor principal de destaque;
+* cinzas claros e brancos para dar respiro;
+* tons escuros elegantes para navegação e cabeçalhos;
+* contraste forte e profissional;
+* visual limpo, inteligente e sofisticado.
+
+A aparência deve transmitir:
+
+* controle;
+* tecnologia;
+* eficiência;
+* confiança;
+* organização;
+* maturidade de produto;
+* robustez de sistema real.
+
+Pode ser criativo, ousado e refinado, mas sem perder a clareza. Quero um resultado moderno, premium e memorável, com acabamento de alto nível.
+
+## Princípios obrigatórios de design
+
+* layout extremamente limpo;
+* hierarquia visual clara;
+* bom uso de espaço em branco;
+* cards bem estruturados;
+* tabelas com leitura fácil;
+* botões bem definidos;
+* campos organizados;
+* sombras suaves;
+* cantos arredondados elegantes;
+* ícones discretos e funcionais;
+* aparência de sistema profissional de estoque;
+* nada poluído;
+* nada infantil;
+* nada genérico;
+* nada exageradamente futurista.
+
+## Estrutura geral do sistema
+
+Construa uma interface consistente com:
+
+* barra superior elegante e institucional;
+* menu lateral organizado para navegação;
+* área principal clara e bem distribuída;
+* páginas com blocos visuais bem definidos;
+* componentes reutilizáveis e coerentes entre si.
+
+A interface deve parecer o mesmo sistema em todas as páginas, com linguagem visual unificada.
+
+## Tela 1 — Login
+
+Crie uma tela de autenticação elegante, sólida e simples.
+
+### Funcionalidades
+
+* campo de e-mail;
+* campo de senha;
+* botão principal de entrar;
+* opção de acesso limpa e discreta;
+* visual de segurança e profissionalismo.
+
+### Direção visual
+
+* tela de login com foco total no formulário;
+* composição centralizada ou levemente deslocada, com equilíbrio visual;
+* card principal refinado;
+* destaque para a marca do sistema;
+* nada excessivo, nada confuso;
+* aparência corporativa e confiável.
+
+## Tela 2 — Dashboard inicial
+
+Crie a página inicial como um painel gerencial de estoque e operação.
+
+### Deve conter:
+
+* gráfico com os tênis mais vendidos do mês;
+* card de alerta mostrando a quantidade em estoque do item de matéria-prima com menor saldo;
+* card de estoque em trânsito;
+* indicadores visuais úteis para leitura rápida;
+* navegação lateral;
+* área superior com acesso a perfil e funções principais.
+
+### Direção visual
+
+* dashboard profissional e estratégico;
+* destaque forte para alertas;
+* organização clara por blocos;
+* sensação de monitoramento em tempo real;
+* visual analítico e corporativo;
+* gráfico elegante, bem posicionado e fácil de interpretar.
+
+## Tela 3 — Cadastro de itens
+
+Crie uma tela única para cadastro de itens, servindo tanto para matéria-prima quanto para produto acabado.
+
+### Campos e informações esperadas
+
+* nome;
+* código;
+* lote;
+* descrição;
+* fornecedor;
+* validade quando aplicável;
+* etiqueta;
+* categoria;
+* tipo do item;
+* quantidade;
+* dados de rastreabilidade e identificação.
+
+### Direção visual
+
+* formulário bem estruturado;
+* campos agrupados de forma lógica;
+* seletor claro para tipo de item;
+* indicação visual muito clara entre matéria-prima e produto acabado;
+* layout que facilite preenchimento rápido;
+* aparência robusta e profissional;
+* evitar áreas vazias exageradas.
+
+### Objetivo da tela
+
+Facilitar cadastro, reduzir erro humano e transmitir a ideia de um formulário corporativo sério e bem desenhado.
+
+## Tela 4 — Tabela de estoque
+
+Crie uma tela de listagem/consulta de estoque em formato de tabela moderna, limpa e muito legível.
+
+### Colunas obrigatórias
+
+* nome;
+* código;
+* etiqueta;
+* lote;
+* descrição;
+* data de entrada;
+* data de validade;
+* fornecedor;
+* quantidade.
+
+### Deve haver também
+
+* botão de edição por linha;
+* destaque visual para baixo estoque ou validade próxima;
+* tabela organizada com leitura fácil;
+* cabeçalho bem destacado;
+* alinhamento impecável;
+* rolagem vertical se necessário;
+* aparência de módulo de consulta de sistema ERP profissional.
+
+## Funcionalidades do sistema que o design precisa refletir
+
+O sistema não é apenas um catálogo visual. Ele precisa parecer pronto para operar:
+
+* cadastro completo de itens;
+* controle de movimentações;
+* devoluções com rastreabilidade;
+* relatórios estratégicos;
+* alertas automáticos;
+* visão gráfica de desempenho;
+* gestão de estoque com inteligência operacional;
+* controle por lotes e fornecedores;
+* suporte à tomada de decisão.
+
+## Tom e atmosfera do produto
+
+Quero uma interface que pareça:
+
+* um software corporativo maduro;
+* um sistema interno de alto valor;
+* uma solução feita para uso diário por equipe operacional;
+* uma experiência visual que passe confiabilidade e precisão.
+
+O design deve ser digno de aplausos: forte, elegante, limpo, profissional e com presença.
+
+## Restrições
+
+* não deixar a interface visualmente carregada;
+* não criar excesso de cores;
+* não usar estilo amador;
+* não usar estética genérica de template pronto;
+* não mudar a essência do sistema;
+* não inventar telas fora do escopo;
+* não misturar elementos desconexos;
+* não sacrificar usabilidade em nome de estética.
+
+## Resultado esperado
+
+Entregar um sistema completo, com todas as telas principais desenhadas do zero, visualmente sofisticado, coerente e pronto para representar a Nômade como um software de gestão de estoque industrial moderno e premium.
+
+
++ Pedidos no Stitch para adicionar modo escuro

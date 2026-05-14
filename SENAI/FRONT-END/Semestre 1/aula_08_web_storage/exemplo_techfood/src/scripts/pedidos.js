@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   renderizarPedidos();
+  configurarLimparPedidos();
 });
 
 function renderizarPedidos() {
@@ -8,7 +9,7 @@ function renderizarPedidos() {
   const spanResumo = document.querySelector("#valor-total-resumo");
   const spanContador = document.querySelector("#contador-itens");
 
-  if (lista) return;
+  if (!lista) return;
 
   const pedidos = JSON.parse(localStorage.getItem("techfood_pedidos") || "[]");
 
@@ -20,6 +21,8 @@ function renderizarPedidos() {
     if (spanTotal) spanTotal.textContent = "R$ 0,00";
     if (spanResumo) spanResumo.textContent = "R$ 0,00";
     if (spanContador) spanContador.textContent = "0 Itens";
+
+    return;
   }
 
   lista.innerHTML = "";
@@ -30,12 +33,12 @@ function renderizarPedidos() {
     li.classList.add("item-pedido");
 
     const textoSpan = document.createElement("span");
-    textoSpan.innerHTML = `<strong>${pedido.nome}</strong> - ${pedido.qtd} x R$ ${pedido.preco.toFixed(2).replace(".", ",")} = <span class="subtotal-item">R$ ${pedido.subtotal.toFixed(2).replace(".", ",")}`;
+    textoSpan.innerHTML = `<strong>${pedido.nome}</strong> - ${pedido.qtd} x R$ ${pedido.preco.toFixed(2).replace(".", ",")} = <span class="subtotal-item">R$ ${pedido.subtotal.toFixed(2).replace(".", ",")}</span>`;
 
     // CRIANDO BOTÃO PARA REMOVER PRATO
     const btnRemover = document.createElement("button");
     btnRemover.textContent = "❌";
-    btnRemover.classList.add("btn-remover");
+    btnRemover.classList.add("btn-remover-item");
 
     // Alterar - Mudou
     btnRemover.addEventListener("click", () => {
@@ -45,19 +48,30 @@ function renderizarPedidos() {
 
       lista.splice(indice, 1);
 
-      localStorage.setItem("techfood_pedidos");
+      localStorage.setItem("techfood_pedidos", JSON.stringify(lista));
       renderizarPedidos();
     });
 
     li.appendChild(textoSpan);
     li.appendChild(btnRemover);
-    listaResumo.appendChild(li);
+    lista.appendChild(li);
     total += pedido.subtotal;
-
-    const totalFmt = `R$ ${total.toFixed(2).replace(".", ",")}`;
-
-    // CONTINUA...
   });
+
+  const totalFmt = `R$ ${total.toFixed(2).replace(".", ",")}`; // Total Formatado
+
+  if (spanTotal) spanTotal.textContent = totalFmt;
+  if (spanResumo) spanResumo.textContent = totalFmt;
+
+  // Contando a quantidade de itens no carrinho
+  const totalItens = pedidos.reduce((acc, p) => {
+    return acc + p.qtd;
+  }, 0); // acc -> variavel acumuladora, p -> acessa o item
+
+  if (spanContador) {
+    spanContador.textContent =
+      totalItens + (totalItens === 1 ? " Item" : " Itens");
+  }
 }
 
 function configurarLimparPedidos() {
