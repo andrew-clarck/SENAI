@@ -1,14 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import FormularioExemplos from "./text_input/formulario";
-import FlatListExemplo from "./flat_list/flatlist_example";
-import ListaCompras from "./flat_list/exer_lista_compras";
+import { NavigationContainer } from "@react-navigation/native";
+import StackNavigator from "./navigation/exemplos/stack_navigator";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <ListaCompras />
-    </View>
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
   );
 }
 
