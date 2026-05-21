@@ -1,23 +1,8 @@
 const ProdutoRepository = require("../repositories/ProdutoRepository");
 
-function validarId(id) {
-  if (
-    !id ||
-    id.trim() === "" ||
-    !Number.isInteger(Number(id)) ||
-    Number(id) < 0
-  ) {
-    throw {
-      status: 400,
-      mensagem: "ID inválido",
-    };
-  }
-}
-
 class ProdutoService {
   async listarProdutos() {
-    const produtos = await ProdutoRepository.listarProdutos();
-
+    const produtos = await ProdutoRepository.findAll();
     return {
       sucesso: true,
       dados: produtos,
@@ -26,44 +11,33 @@ class ProdutoService {
   }
 
   async buscarProdutoPorId(id) {
-    validarId(id);
+    if (!id || isNaN(id)) {
+      throw { status: 400, mensagem: "ID inválido" };
+    }
 
-    const produto = await ProdutoRepository.buscarProdutoPorId(id);
-
+    const produto = await ProdutoRepository.findById(id);
     if (!produto) {
-      throw {
-        status: 404,
-        mensagem: "Produto não encontrado",
-      };
+      throw { status: 404, mensagem: "Produto não encontrado" };
     }
 
     return {
       sucesso: true,
-      dados: produto[0],
+      dados: produto,
     };
   }
 
   async cadastrarProduto(dados) {
-    const { nome, descricao, preco, categoria, disponivel } = dados;
+    const { nome, descricao, preco, categoria, disponivel, imagem } = dados;
 
-    if (
-      !nome ||
-      nome.trim() === "" ||
-      !descricao ||
-      descricao.trim() === "" ||
-      preco === undefined
-    ) {
+    if (!nome || !descricao || preco === undefined) {
       throw {
         status: 400,
-        mensagem: "OS campos nome, descrição e preço são obrigatórios",
+        mensagem: "Nome, descrição e preço são obrigatórios",
       };
     }
 
-    if (typeof preco !== "number" || preco <= 0) {
-      throw {
-        status: 400,
-        mensagem: "Preço deve ser um número positivo",
-      };
+    if (typeof Number(preco) !== "number" || preco <= 0) {
+      throw { status: 400, mensagem: "Preço deve ser um número positivo" };
     }
 
     const novoProduto = {
@@ -71,85 +45,74 @@ class ProdutoService {
       descricao: descricao.trim(),
       preco,
       categoria: categoria || null,
-      disponivel: disponivel || true,
+      disponivel: disponivel ?? true,
+      imagem,
     };
 
-    const resultado = await ProdutoRepository.cadastrarProduto(novoProduto);
+    const id = await ProdutoRepository.create(novoProduto);
 
     return {
       sucesso: true,
       mensagem: "Produto cadastrado com sucesso",
-      resultado,
+      id,
     };
   }
 
   async atualizarProduto(id, dados) {
-    validarId(id);
-
-    const produtoExiste = await ProdutoRepository.buscarProdutoPorId(id);
-
-    if (!produtoExiste) {
-      throw {
-        status: 404,
-        mensagem: "Produto não encontrado",
-      };
+    if (!id || isNaN(id)) {
+      throw { status: 400, mensagem: "ID inválido" };
     }
 
-    const produtoAtualizado = {};
+    const existe = await ProdutoRepository.findById(id);
+    if (!existe) {
+      throw { status: 404, mensagem: "Produto não encontrado" };
+    }
 
-    const { nome, descricao, preco, categoria, disponivel } = dados;
+    const atualizado = {};
+    const { nome, descricao, preco, categoria, disponivel, imagem } = dados;
 
-    if (nome !== undefined || nome.trim() !== "")
-      produtoAtualizado.nome = nome.trim();
-    if (descricao !== undefined || descricao.trim() !== "")
-      produtoAtualizado.descricao = descricao.trim();
-
+    if (nome !== undefined) atualizado.nome = nome.trim();
+    if (descricao !== undefined) atualizado.descricao = descricao.trim();
     if (preco !== undefined) {
       if (typeof preco !== "number" || preco <= 0) {
-        throw {
-          status: 400,
-          mensagem: "Preço deve ser um número positivo",
-        };
+        throw { status: 400, mensagem: "Preço deve ser um número positivo" };
       }
-      produtoAtualizado.preco = preco;
+      atualizado.preco = preco;
     }
+    if (categoria !== undefined) atualizado.categoria = categoria;
+    if (disponivel !== undefined) atualizado.disponivel = disponivel;
+    if (imagem !== undefined) atualizado.imagem = imagem;
 
-    if (categoria !== undefined || categoria.trim() !== "")
-      produtoAtualizado.categoria = categoria;
-    if (disponivel !== undefined) produtoAtualizado.disponivel = disponivel;
-
-    if (Object.keys(produtoAtualizado).length === 0) {
+    if (Object.keys(atualizado).length === 0) {
       throw {
         status: 400,
         mensagem: "Nenhum dado válido enviado para atualização",
       };
     }
 
-    await ProdutoRepository.atualizarProduto(id, produtoAtualizado);
+    await ProdutoRepository.update(id, atualizado);
 
     return {
       sucesso: true,
-      mensagem: "Produto atualizado",
+      mensagem: "Produto atualizado com sucesso",
     };
   }
 
-  async apagarProduto(id) {
-    validarId(id);
-
-    const produtoExiste = await ProdutoRepository.buscarProdutoPorId(id);
-
-    if (!produtoExiste) {
-      throw {
-        status: 404,
-        mensagem: "Produto não encontrado",
-      };
+  async deletarProduto(id) {
+    if (!id || isNaN(id)) {
+      throw { status: 400, mensagem: "ID inválido" };
     }
 
-    await ProdutoRepository.apagarProduto(id);
+    const existe = await ProdutoRepository.findById(id);
+    if (!existe) {
+      throw { status: 404, mensagem: "Produto não encontrado" };
+    }
+
+    await ProdutoRepository.delete(id);
 
     return {
       sucesso: true,
-      mensagem: "Produto apagado",
+      mensagem: "Produto apagado com sucesso",
     };
   }
 }

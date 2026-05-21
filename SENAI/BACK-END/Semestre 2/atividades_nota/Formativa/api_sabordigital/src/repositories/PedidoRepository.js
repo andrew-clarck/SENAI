@@ -1,50 +1,92 @@
 const pool = require("../config/database");
 
 class PedidoRepository {
-  async listarPedidos() {
-    const listaPedidos = await pool.query("SELECT * FROM pedido");
-    return listaPedidos;
+  async findAll() {
+    const [rows] = await pool.query(
+      "SELECT * FROM pedido ORDER BY criado_em DESC",
+    );
+    return rows;
   }
 
-  async buscarPedidoPorId(id) {
-    const mostrarPedido = await pool.query(
-      "SELECT * FROM pedido WHERE id = ?",
+  async findById(id) {
+    // Busca o pedido
+    const [pedidoRows] = await pool.query("SELECT * FROM pedido WHERE id = ?", [
+      id,
+    ]);
+    if (pedidoRows.length === 0) return null;
+
+    const pedido = pedidoRows[0];
+
+    // Busca os itens do pedido com as informações do produto
+    const [itensRows] = await pool.query(
+      `
+            SELECT ip.*, p.nome as produto_nome, p.descricao as produto_descricao 
+            FROM item_pedido ip
+            INNER JOIN produto p ON ip.produto_id = p.id
+            WHERE ip.pedido_id = ?
+        `,
       [id],
     );
-    return mostrarPedido[0];
+
+    pedido.itens = itensRows;
+    return pedido;
   }
 
-  async cadastrarPedido(dadosDoPedido) {
-    const resultadoCadastro = await pool.query("INSERT INTO pedido SET ?", [
-      dadosDoPedido,
-    ]);
-    return resultadoCadastro.insertId;
-  }
+  async create(pedidoData, itens) {
+    const { cliente, status, total } = pedidoData;
+    const connection = await pool.getConnection();
 
-  async atualizarPedido(id, dadosDoPedido) {
-    const camposPedido = [];
-    const dadoPedido = [];
+    try {
+      await connection.beginTransaction();
 
-    for (const [key, value] of Object.entries[dadosDoPedido]) {
-      camposPedido.push(`${key} = ?`);
-      dadoPedido.push(value);
+      const [pedidoResult] = await connection.query(
+        "INSERT INTO pedido (cliente, status, total) VALUES (?, ?, ?)",
+        [cliente || null, status || "pendente", total],
+      );
+      const pedidoId = pedidoResult.insertId;
 
-      if (camposPedido.length === 0) return null;
+      if (itens && itens.length > 0) {
+        const values = itens.map((item) => [
+          pedidoId,
+          item.produto_id,
+          item.quantidade,
+          item.preco_unitario,
+        ]);
 
-      dadoPedido.push(id);
+        await connection.query(
+          "INSERT INTO item_pedido (pedido_id, produto_id, quantidade, preco_unitario) VALUES ?",
+          [values],
+        );
+      }
 
-      const query = `UPDATE produto SET ${camposPedido.join(",")} WHERE id = ?`;
-
-      const resultado = await pool.query(query, dadoPedido);
-
-      return resultado.affectedRows;
+      await connection.commit();
+      return pedidoId;
+    } catch (error) {
+      await connection.rollback();
+      throw error;
+    } finally {
+      connection.release();
     }
   }
 
-  async apagarPedido(id) {
-    await pool.query("DELETE FROM pedido WHERE id = ?", [id]);
+  async update(id, pedidoData) {
+    const fields = [];
+    const values = [];
+    for (const [key, value] of Object.entries(pedidoData)) {
+      fields.push(`${key} = ?`);
+      values.push(value);
+    }
+    if (fields.length === 0) return null;
 
-    return true;
+    values.push(id);
+    const query = `UPDATE pedido SET ${fields.join(", ")} WHERE id = ?`;
+    const [result] = await pool.query(query, values);
+    return result.affectedRows;
+  }
+
+  async delete(id) {
+    const [result] = await pool.query("DELETE FROM pedido WHERE id = ?", [id]);
+    return result.affectedRows;
   }
 }
 

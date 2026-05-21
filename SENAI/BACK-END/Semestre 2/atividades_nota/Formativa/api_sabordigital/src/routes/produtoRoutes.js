@@ -1,11 +1,12 @@
-const express = require("express")
-const router = express.Router() // Parte dentro do express que trabalha com o gerenciamento de rotas
-const ProdutoController = require("../controllers/ProdutoController")
+const express = require("express");
+const router = express.Router();
+const ProdutoController = require("../controllers/ProdutoController");
+const upload = require("../config/upload");
 
-router.get("/", ProdutoController.listarProduto)
+router.get("/", ProdutoController.listar);
+router.get("/:id", ProdutoController.buscarPorId);
+router.post("/", upload.single("imagem"), ProdutoController.cadastrar);
+router.put("/:id", ProdutoController.atualizar);
+router.delete("/:id", ProdutoController.deletar);
 
-router.get("/:id", ProdutoController.buscarProdutoPorId)
-
-router.post("/", ProdutoController.cadastrarProduto)
-router.put("/:id", ProdutoController.atualizarProduto)
-router.delete("/:id", ProdutoController.apagarProduto)
+module.exports = router;

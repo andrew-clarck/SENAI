@@ -1,50 +1,44 @@
 const pool = require("../config/database");
 
 class ProdutoRepository {
-  async listarProdutos() {
-    const listaProdutos = await pool.query("SELECT * FROM produto");
-    return listaProdutos;
+  async findAll() {
+    const [rows] = await pool.query("SELECT * FROM produto ORDER BY id DESC");
+    return rows;
   }
 
-  async buscarProdutoPorId(id) {
-    const mostrarProduto = await pool.query(
-      "SELECT * FROM produto WHERE id = ?",
-      [id],
+  async findById(id) {
+    const [rows] = await pool.query("SELECT * FROM produto WHERE id = ?", [id]);
+    return rows[0];
+  }
+
+  async create(produtoData) {
+    const { nome, descricao, preco, categoria, disponivel, imagem } =
+      produtoData;
+    const [result] = await pool.query(
+      "INSERT INTO produto (nome, descricao, preco, categoria, disponivel, imagem) VALUES (?, ?, ?, ?, ?, ?)",
+      [nome, descricao, preco, categoria, disponivel, imagem],
     );
-    return mostrarProduto[0];
+    return result.insertId;
   }
 
-  async cadastrarProduto(dadosDoProduto) {
-    const resultadoCadastro = await pool.query("INSERT INTO produto SET ?", [
-      dadosDoProduto,
-    ]);
-    return resultadoCadastro.insertId;
-  }
-
-  async atualizarProduto(id, dadosDoProduto) {
-    const camposProduto = [];
-    const dadoProduto = [];
-
-    for (const [key, value] of Object.entries(dadosDoProduto)) {
-      camposProduto.push(`${key} = ?`);
-      dadoProduto.push(value);
-
-      if (camposProduto.length === 0) return null;
-
-      dadoProduto.push(id);
-
-      const query = `UPDATE produto SET ${camposProduto.join(",")} WHERE id = ?`;
-
-      const resultado = await pool.query(query, dadoProduto);
-
-      return resultado.affectedRows;
+  async update(id, produtoData) {
+    const fields = [];
+    const values = [];
+    for (const [key, value] of Object.entries(produtoData)) {
+      fields.push(`${key} = ?`);
+      values.push(value);
     }
+    if (fields.length === 0) return null;
+
+    values.push(id);
+    const query = `UPDATE produto SET ${fields.join(", ")} WHERE id = ?`;
+    const [result] = await pool.query(query, values);
+    return result.affectedRows;
   }
 
-  async apagarProduto(id) {
-    await pool.query("DELETE FROM produto WHERE id = ?", [id]);
-
-    return true;
+  async delete(id) {
+    const [result] = await pool.query("DELETE FROM produto WHERE id = ?", [id]);
+    return result.affectedRows;
   }
 }
 
