@@ -107,7 +107,7 @@ Usado para:
 
 ## Servo Motor
 
-- Dispositivo não identificado
+- SG90
 
 Funções:
 
@@ -128,11 +128,11 @@ Durante a varredura, o sistema registra:
 
 ## Motor de Passo
 
-- Dispositivo não identificado
+- 28BYJ-48
 
 Controlado por:
 
-- A4988 stepper motor driver
+- ULN2003 Driver Stepper Motor
 
 Funções:
 

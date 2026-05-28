@@ -37,21 +37,6 @@ const BASE_URL = "http://localhost:3000";
 // Padrão do slide: ler o JSON ANTES de verificar response.ok.
 //   Isso permite usar dados.erro (mensagem do servidor) no throw,
 //   em vez de um número genérico como "Erro 500".
-//
-// async/await vs .then() — as duas formas fazem exatamente a mesma coisa:
-//
-//   // Forma antiga com .then() encadeado:
-//   function buscarProdutos() {
-//     return fetch(BASE_URL + "/produtos")
-//       .then(function(res)   { return res.json(); })
-//       .then(function(dados) {
-//         if (!dados.sucesso) throw new Error(dados.erro);
-//         return dados.dados;
-//       });
-//   }
-//
-//   Mantemos async/await por ser mais legível e fácil de depurar,
-//   mas você verá .then() em código legado — saiba reconhecer as duas.
 // ─────────────────────────────────────────────────────────────────────────────
 async function buscarProdutos() {
   const response = await fetch(`${BASE_URL}/produtos`);
@@ -95,7 +80,7 @@ async function buscarPedidos() {
 }
 
 // Deletar Pedidos
-async function dleetarPedido(id) {
+async function deletarPedido(id) {
   const response = await fetch(`${BASE_URL}/pedidos/${id}`, {
     method: "DELETE",
   });

@@ -33,7 +33,7 @@ function renderizarPedidos() {
     li.classList.add("item-pedido");
 
     const textoSpan = document.createElement("span");
-    textoSpan.innerHTML = `<strong>${pedido.nome}</strong> - ${pedido.qtd} x R$ ${pedido.preco.toFixed(2).replace(".", ",")} = <span class="subtotal-item">R$ ${pedido.subtotal.toFixed(2).replace(".", ",")}</span>`;
+    textoSpan.innerHTML = `<strong>${pedido.nome}</strong> - ${pedido.quantidade} x R$ ${pedido.preco.toFixed(2).replace(".", ",")} = <span class="subtotal-item">R$ ${pedido.subtotal.toFixed(2).replace(".", ",")}</span>`;
 
     // CRIANDO BOTÃO PARA REMOVER PRATO
     const btnRemover = document.createElement("button");
@@ -65,7 +65,7 @@ function renderizarPedidos() {
 
   // Contando a quantidade de itens no carrinho
   const totalItens = pedidos.reduce((acc, p) => {
-    return acc + p.qtd;
+    return acc + p.quantidade;
   }, 0); // acc -> variavel acumuladora, p -> acessa o item
 
   if (spanContador) {
