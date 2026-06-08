@@ -1,3 +1,7 @@
+from umqtt.simple import MQTTClient
+import ujson
+from wifi_connect import conectar_wifi
+from config import *
 from machine import Pin, ADC, PWM
 from utime import ticks_ms, ticks_diff, sleep_ms
 from dht import DHT22
@@ -17,7 +21,7 @@ SISTEMA AUTÔNOMO DE DETECÇÃO E COMBATE A INCÊNDIO
 """
 
 led_red = Pin(14, Pin.OUT)
-buzzer = PWM(Pin(15))
+buzzer = PWM(Pin(13))
 
 servo_motor = Servo(pin=1)
 
@@ -27,8 +31,8 @@ in3 = Pin(21, Pin.OUT)
 in4 = Pin(22, Pin.OUT)
 
 ultrassonic = HCSR04(
-    trigger_pin=17,
-    echo_pin=16,
+    trigger_pin=1]6,
+    echo_pin=17,
     echo_timeout_us=30000
 )
 
@@ -41,6 +45,60 @@ sensor_dht = DHT22(Pin(18))
 #sensor_gas = ADC(26)
 
 sensor_ldr = ADC(27)
+
+# Variáveis globais MQTT
+temp = 0
+umid = 0
+distancia_cm = 0
+leitura_ldr = 0
+
+def callback(topic, msg):
+
+    try:
+
+        comando = ujson.loads(msg)
+
+        print("Comando recebido:", comando)
+
+        if "led" in comando:
+
+            if comando["led"]:
+                led_red.on()
+            else:
+                led_red.off()
+
+        if "buzzer" in comando:
+
+            if comando["buzzer"]:
+                buzzer.duty_u16(30000)
+            else:
+                buzzer.duty_u16(0)
+
+    except Exception as e:
+
+        print("Erro MQTT:", e)
+
+def publicar_estado():
+
+    payload = {
+
+        "temperatura": temp,
+        "umidade": umid,
+        "luminosidade": leitura_ldr,
+        "incendio": incendio_detectado,
+
+    }
+
+    try:
+
+        client.publish(
+            TOPIC_SENSORES,
+            ujson.dumps(payload)
+        )
+
+    except Exception as e:
+
+        print("Erro publicando:", e)
 
 angulo = 0
 melhor_angulo = 0
@@ -152,7 +210,35 @@ def girar_stepper(distancia_cm):
 
     posicao_stepper = destino
 
+#Tentando conectar com o WiFi e MQTT
+print("Conectando WiFi...")
+
+if not conectar_wifi(WIFI_SSID, WIFI_PASS):
+    raise Exception("Falha no WiFi")
+
+print("Conectando MQTT...")
+
+client = MQTTClient(
+    CLIENT_ID,
+    BROKER_IP,
+    port=BROKER_PORT
+)
+
+client.set_callback(callback)
+
+client.connect()
+
+client.subscribe(TOPIC_COMANDOS)
+
+print("MQTT conectado")
+print("Inscrito em:", TOPIC_COMANDOS)
+
 while True:
+    try:
+        client.check_msg()
+    except:
+        pass
+    
     agora = ticks_ms()
 
     if ticks_diff(agora, tempo_sensores) >= 1000:
@@ -163,6 +249,7 @@ while True:
 
         temp = sensor_dht.temperature()
         umid = sensor_dht.humidity()
+        publicar_estado()
 
         #gas = sensor_gas.read_u16()
 
@@ -197,6 +284,7 @@ while True:
             sleep_ms(100)
 
             leitura_ldr = sensor_ldr.read_u16()
+            publicar_estado()
 
             print(f"Ângulo: {angulo}")
             print(f"Luz: {leitura_ldr}")
@@ -216,7 +304,12 @@ while True:
 
                 sleep_ms(100)
 
+                print("Lendo ultrassônico...")
                 distancia_cm = ultrassonic.distance_cm()
+                print("Leitura concluída")
+
+                print("Valor retornado:", distancia_cm)
+                print("Tipo:", type(distancia_cm))
 
                 if distancia_cm > 0:
 

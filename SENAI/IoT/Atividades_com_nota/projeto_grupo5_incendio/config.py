@@ -23,5 +23,6 @@ CLIENT_ID = f"pico_{MEU_NOME.lower()}"  # ex: pico_joao
 # ── Tópico MQTT ───────────────────────────────────────────────────
 # Endereço da mensagem — como uma pasta: projeto/quem/dado
 # O dashboard precisa assinar o mesmo tópico para receber
-TOPIC_PUB = f"senai/{MEU_NOME.lower()}/hello"  # ex: senai/joao/hello
+TOPIC_SENSORES = f"senai/grupo5/sensores"
+TOPIC_COMANDOS = f"senai/grupo5/comandos"
 
