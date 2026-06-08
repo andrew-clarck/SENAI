@@ -1,0 +1,175 @@
+/* ==========================================================
+   CADASTRO.CSS
+   Estilos exclusivos da página cadastro.html
+   ========================================================== */
+
+/* Área principal */
+main {
+  min-height: 70vh;
+  padding: 40px 20px;
+  background: #f8f9fa;
+}
+
+/* Seção do formulário */
+#secao-cadastro {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Card do formulário */
+#form-cadastro {
+  background: #fff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Labels */
+#form-cadastro > label {
+  color: var(--cor-primaria);
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* Inputs padrão */
+#form-cadastro input[type="text"],
+#form-cadastro input[type="number"],
+#form-cadastro textarea,
+#form-cadastro select,
+#form-cadastro input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.15s ease;
+  background: #fff;
+}
+
+/* Campo descrição */
+#form-cadastro textarea {
+  height: 120px;
+  resize: none;
+  overflow-y: auto;
+}
+
+/* Estados de foco */
+#form-cadastro input:focus,
+#form-cadastro textarea:focus,
+#form-cadastro select:focus {
+  outline: none;
+  border-color: var(--cor-destaque);
+}
+
+/* Checkbox disponível */
+#form-cadastro input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--cor-destaque);
+  margin-bottom: 10px;
+}
+
+/* Upload */
+#form-cadastro input[type="file"] {
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Botão principal */
+#form-cadastro button {
+  margin-top: 10px;
+  padding: 14px;
+
+  background: var(--cor-destaque);
+  color: #fff;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+/* Hover do botão */
+#form-cadastro button:hover {
+  background: #d35400;
+}
+
+/* Esconde o input original */
+#imagem {
+  display: none;
+}
+
+/* Botão personalizado */
+.btn-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 50px;
+
+  border: 2px dashed var(--cor-destaque);
+  border-radius: 8px;
+
+  background: #fff;
+  color: var(--cor-primaria);
+
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.btn-upload:hover {
+  background: #fff8f2;
+  border-color: #d35400;
+}
+
+/* Nome do arquivo */
+#nome-arquivo {
+  display: block;
+  margin-top: 8px;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.preview-container {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+#preview-imagem {
+  display: none;
+
+  width: 100%;
+  max-height: 250px;
+
+  object-fit: cover;
+
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+/* Responsividade */
+@media screen and (max-width: 600px) {
+  main {
+    padding: 20px 15px;
+  }
+
+  #form-cadastro {
+    padding: 20px;
+  }
+
+  #form-cadastro button {
+    width: 100%;
+  }
+}
