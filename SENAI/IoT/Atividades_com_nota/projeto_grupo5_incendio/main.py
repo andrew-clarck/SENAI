@@ -31,7 +31,7 @@ in3 = Pin(21, Pin.OUT)
 in4 = Pin(22, Pin.OUT)
 
 ultrassonic = HCSR04(
-    trigger_pin=1]6,
+    trigger_pin=16,
     echo_pin=17,
     echo_timeout_us=30000
 )
@@ -82,7 +82,7 @@ def publicar_estado():
 
     payload = {
 
-        "temperatura": temp,
+        "temperatura": temp
         "umidade": umid,
         "luminosidade": leitura_ldr,
         "incendio": incendio_detectado,
