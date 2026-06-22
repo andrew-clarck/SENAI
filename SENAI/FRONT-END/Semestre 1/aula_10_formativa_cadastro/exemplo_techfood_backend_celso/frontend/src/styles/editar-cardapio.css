@@ -1,0 +1,464 @@
+/* ===================================================
+EDITAR CARDÁPIO
+=================================================== */
+
+main {
+  padding: 30px;
+}
+
+/* ===================================================
+TÍTULO
+=================================================== */
+
+.titulo-secao {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--cor-primaria);
+}
+
+/* ===================================================
+GRID DE PRODUTOS
+=================================================== */
+
+#lista-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+/* ===================================================
+CARD
+=================================================== */
+
+.produto-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.produto-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.15);
+}
+
+.produto-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.produto-info {
+  padding: 20px;
+}
+
+.produto-info h3 {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.produto-info p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.preco {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--cor-destaque);
+}
+
+/* ===================================================
+BOTÕES DOS CARDS
+=================================================== */
+
+.acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-editar,
+.btn-excluir {
+  flex: 1;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 12px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-editar {
+  background: #f39c12;
+  color: white;
+}
+
+.btn-editar:hover {
+  transform: scale(1.05);
+
+  box-shadow: 0 6px 15px rgba(243, 156, 18, 0.35);
+}
+
+.btn-excluir {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-excluir:hover {
+  transform: scale(1.05);
+
+  box-shadow: 0 6px 15px rgba(231, 76, 60, 0.35);
+}
+
+/* ===================================================
+MODAL
+=================================================== */
+
+.modal {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.65);
+
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.modal.ativo {
+  display: flex;
+}
+
+/* ===================================================
+CAIXA INTERNA DO MODAL
+=================================================== */
+
+.modal-content {
+  background: white;
+
+  width: 90%;
+  max-width: 700px;
+
+  border-radius: 20px;
+
+  padding: 30px;
+
+  max-height: 90vh;
+  overflow-y: auto;
+
+  animation: abrirModal 0.25s ease;
+}
+
+@keyframes abrirModal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================================
+FECHAR MODAL
+=================================================== */
+
+.fechar-modal {
+  float: right;
+
+  font-size: 32px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  color: #999;
+
+  transition: 0.2s;
+}
+
+.fechar-modal:hover {
+  color: #e74c3c;
+}
+
+/* ===================================================
+FORMULÁRIO
+=================================================== */
+
+#form-edicao {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  margin-top: 15px;
+}
+
+#form-edicao label {
+  font-weight: 600;
+  color: #444;
+}
+
+#form-edicao input,
+#form-edicao textarea,
+#form-edicao select {
+  padding: 14px;
+
+  border-radius: 12px;
+
+  border: 2px solid #e3e3e3;
+
+  font-size: 15px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#form-edicao textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+#form-edicao input:focus,
+#form-edicao textarea:focus,
+#form-edicao select:focus {
+  outline: none;
+
+  border-color: #f39c12;
+
+  box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.15);
+}
+
+/* ===================================================
+PREVIEW DA IMAGEM
+=================================================== */
+
+.preview-container {
+  margin-top: 10px;
+}
+
+#preview-imagem {
+  width: 100%;
+  height: 250px;
+
+  object-fit: cover;
+
+  border-radius: 15px;
+
+  border: 2px solid #eee;
+}
+
+/* ===================================================
+INPUT FILE
+=================================================== */
+
+#imagem {
+  display: none;
+}
+
+.btn-upload {
+  text-align: center;
+
+  padding: 14px;
+
+  border-radius: 12px;
+
+  border: 2px dashed #f39c12;
+
+  cursor: pointer;
+
+  font-weight: bold;
+
+  transition: 0.25s;
+}
+
+.btn-upload:hover {
+  background: #fff6e8;
+}
+
+/* ===================================================
+BOTÃO SALVAR
+=================================================== */
+
+#form-edicao button {
+  margin-top: 10px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  padding: 15px;
+
+  background: #27ae60;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#form-edicao button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 18px rgba(39, 174, 96, 0.3);
+}
+
+/* ===================================================
+RESPONSIVIDADE
+=================================================== */
+
+@media (max-width: 768px) {
+  main {
+    padding: 15px;
+  }
+
+  #lista-produtos {
+    grid-template-columns: 1fr;
+  }
+
+  .acoes {
+    flex-direction: column;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+}
+
+/* =====================================
+TOAST
+===================================== */
+
+#toast {
+  position: fixed;
+
+  top: 20px;
+  right: 20px;
+
+  min-width: 280px;
+
+  padding: 15px 20px;
+
+  border-radius: 12px;
+
+  color: white;
+
+  font-weight: bold;
+
+  z-index: 99999;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(-20px);
+
+  transition: 0.3s;
+}
+
+#toast.show {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.toast-success {
+  background: #27ae60;
+}
+
+.toast-error {
+  background: #e74c3c;
+}
+
+/* =====================================
+MODAL CONFIRMAÇÃO
+===================================== */
+
+.modal-confirmacao-content {
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  width: 90%;
+  max-width: 400px;
+
+  text-align: center;
+
+  animation: abrirModal 0.25s ease;
+}
+
+.confirmacao-botoes {
+  margin-top: 25px;
+
+  display: flex;
+
+  gap: 10px;
+}
+
+.confirmacao-botoes button {
+  flex: 1;
+
+  border: none;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+
+  transition: 0.2s;
+}
+
+#cancelar-exclusao {
+  background: #ecf0f1;
+}
+
+#cancelar-exclusao:hover {
+  background: #dcdfe1;
+}
+
+#confirmar-exclusao {
+  background: #e74c3c;
+
+  color: white;
+}
+
+#confirmar-exclusao:hover {
+  background: #c0392b;
+}
