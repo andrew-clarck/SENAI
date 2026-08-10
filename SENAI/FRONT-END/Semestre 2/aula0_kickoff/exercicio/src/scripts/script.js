@@ -31,14 +31,41 @@ bebidas.forEach((bebida) => {
 
 const containerBebidas = document.querySelector("#lista-bebidas");
 
-function renderizarBebidas() {
-  bebidas.forEach((bebida) => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
+function criarCard(bebida) {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
     <p>${bebida.descricao()}</p>`;
-    containerBebidas.appendChild(card);
+
+  card.addEventListener("click", () => {
+    alert(`Volume da bebida: ${bebida.emLitros()}`);
   });
+
+  return card;
+}
+
+function renderizarBebidas(textoFiltro = "") {
+  const filtro = textoFiltro.trim().toLowerCase();
+
+  containerBebidas.innerHTML = "";
+
+  const bebidasFiltradas = bebidas.filter((b) =>
+    b.nome.toLowerCase().includes(filtro),
+  );
+
+  bebidasFiltradas.forEach((bebida) => {
+    containerBebidas.appendChild(criarCard(bebida));
+  });
+
+  if (bebidasFiltradas.length === 0) {
+    containerBebidas.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#888;">Nenhuma bebida encontrada.</p>`;
+  }
 }
 
 renderizarBebidas();
+
+const inputFiltro = document.querySelector("#filtro");
+
+inputFiltro.addEventListener("input", (event) => {
+  renderizarBebidas(event.target.value);
+});
