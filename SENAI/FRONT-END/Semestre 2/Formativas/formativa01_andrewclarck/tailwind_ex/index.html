@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cardápio</title>
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body>
+    <header
+      class="bg-red-600 text-white text-center px-4 py-2 font-bold text-2xl"
+    >
+      <h1>Cardápio Brasileiro</h1>
+    </header>
+    <main class="container">
+      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <article class="bg-white p-4 rounded-lg shadow-sm">
+          <h2 class="text-xl font-semibold">Feijoada</h2>
+          <p>Prato bão</p>
+        </article>
+        <article class="bg-white p-4 rounded-lg shadow-sm">
+          <h2 class="text-xl font-semibold">Coxinha</h2>
+          <p>Tem em toda esquina</p>
+        </article>
+        <article class="bg-white p-4 rounded-lg shadow-sm">
+          <h2 class="text-xl font-semibold">Brigadeiro</h2>
+          <p>Top 5 doces</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
+
+<!--
+O que mudou? A estrutura do tailwind é mais complexa, para fazer a mesma coisa são necessárias muitas utilidades a mais, os cards ficaram com sombra diferente, e as letras devem ter ficado com diferenças pequenas no peso e tamanho, a cor do header ficou um pouco diferente.
+O que mudei no arquivo: Tive que colocar mais classes para deixar mais parecido
+
+O que ficou igual? O grid responsivo ficou igual, de resto, ficou parecido por conta das classes a mais utilizadas, porém, foi mais complicado do que no bootstrap.
+O que deixei igual no arquivo: As classes dos cards ficaram praticamente identicas, a não ser pelo rounded, de resto tudo igual. Porém, em outros itens tive que colocar mais classes para deixar mais parecido com a versão do Bootstrap
+-->

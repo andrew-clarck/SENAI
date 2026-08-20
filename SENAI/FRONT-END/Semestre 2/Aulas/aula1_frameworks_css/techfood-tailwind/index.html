@@ -1,24 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TechFood — Sabor & Saber (Tailwind)</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechFood — Sabor & Saber (Tailwind)</title>
 
-  <!--
+    <!--
     LIVE CODE — DIFERENÇA DO BOOTSTRAP:
     Não tem CDN aqui. O CSS vai ser gerado localmente pelo Tailwind.
     Você vai criar o output.css rodando no terminal:
       npx tailwindcss -i input.css -o output.css --watch
     Depois linkar aqui:
-
-    <link rel="stylesheet" href="output.css">
-  -->
-
-</head>
-<body>
-
-  <!--
+    -->
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body class="bg-gray-100">
+    <!--
     LIVE CODE — PASSO 4 (Header com Tailwind)
     Mesma ideia do Bootstrap, classes diferentes:
 
@@ -28,12 +25,12 @@
     Percebe que text-white, text-center, py-4, mb-4 são IGUAIS!
     Só o bg muda: bg-danger (nome semântico) → bg-red-600 (nome descritivo)
   -->
-  <header>
-    <h1>Sabor &amp; Saber</h1>
-    <p>Cardápio digital</p>
-  </header>
+    <header class="bg-red-600 text-white text-center py-4 mb-4">
+      <h1 class="font-bold text-3xl">Sabor &amp; Saber</h1>
+      <p text-lg>Cardápio digital</p>
+    </header>
 
-  <!--
+    <!--
     LIVE CODE — PASSO 5 (Container e Grid com Tailwind)
     Bootstrap:  <main class="container">
     Tailwind:   <main class="max-w-6xl mx-auto px-4">
@@ -50,17 +47,16 @@
 
     No Tailwind o grid vai direto na section, sem div row.
   -->
-  <main>
-    <h2>Nosso Cardápio</h2>
+    <main class="mas-w-6x1 mx-auto px-4">
+      <h2 class="text-center text-2xl font-bold mb-6">Nosso Cardápio</h2>
 
-    <section id="cardapio">
-    </section>
-  </main>
+      <section id="cardapio" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></section>
+    </main>
 
-  <footer>
-    <small>TechFood · Aula 1 Tailwind · Prof. Marlon</small>
-  </footer>
+    <footer class="text-center text-gray-400 py-6 mt-8">
+      <small>TechFood · Aula 1 Tailwind · Prof. Marlon</small>
+    </footer>
 
-  <script src="script.js" defer></script>
-</body>
+    <script src="script.js" defer></script>
+  </body>
 </html>
