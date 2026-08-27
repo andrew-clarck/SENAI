@@ -21,7 +21,7 @@ class UsuarioService {
 
     const role = papel === "admin" ? "admin" : "cliente";
 
-    const novoId = await ProdutoRepository.create({
+    const novoId = await UsuarioRepository.create({
       nome,
       email,
       senha: senhaHash,
@@ -35,7 +35,8 @@ class UsuarioService {
     };
   }
 
-  async login(email, senha) {
+  async login(dados) {
+    const { email, senha } = dados;
     if (!email || !senha) {
       throw {
         status: 400,
@@ -62,9 +63,9 @@ class UsuarioService {
 
     const token = jwt.sign(
       {
-        id,
-        email,
-        papel,
+        id: usuario.id,
+        email: usuario.email,
+        papel: usuario.papel,
       },
       JWT_SECRET,
       {
