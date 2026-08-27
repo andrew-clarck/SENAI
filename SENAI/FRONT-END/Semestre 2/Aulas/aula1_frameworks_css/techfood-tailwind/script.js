@@ -70,12 +70,12 @@ const containerCardapio = document.querySelector("#cardapio");
 // Função dedicada para renderizar UM prato → boa prática de organização.
 // Separar em função pequena facilita testar e trocar depois.
 function criarCardPrato(prato) {
-  const card = document.createElement("div");
-  card.className = "card-prato p-4 bg-white rounded-x1 shadow-sm";
+  const card = document.createElement("article");
+  card.className = "card-prato p-4 bg-white rounded-xl shadow-sm h-full";
 
   // Template string: mais legível que concatenar com "+"
   card.innerHTML = `
-    <h3 class="text-x1 font-bold text-gray-800 mb-2">${prato.nome}</h3>
+    <h3 class="text-xl font-bold text-gray-800 mb-2">${prato.nome}</h3>
     <span class="text-sm text-gray-500 block mb-3 categoria">${prato.categoria}</span>
     <div class="text-lg font-bold text-green-600">${prato.formatarPreco()}</div>
   `;
