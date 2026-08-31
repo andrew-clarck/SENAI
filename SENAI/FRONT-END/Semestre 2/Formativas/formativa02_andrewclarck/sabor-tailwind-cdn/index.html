@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parte 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <nav class="flex justify-between">
+      <div>Logo</div>
+      <div>Menu</div>
+    </nav>
+
+    <section class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="flex flex-col p-4 bg-white rounded-xl shadow h-full">
+        <div>card 1</div>
+        <button class="mt-auto rounded-xl bg-gray-100">Botão</button>
+      </article>
+      <article class="flex flex-col p-4 bg-white rounded-xl shadow h-full">
+        <div>card 2</div>
+        <button class="mt-auto rounded-xl bg-gray-100">Botão</button>
+      </article>
+      <article class="flex flex-col p-4 bg-white rounded-xl shadow h-full">
+        <div>card 3</div>
+        <button class="mt-auto rounded-xl bg-gray-100">Botão</button>
+      </article>
+    </section>
+
+    <form class="mt-4">
+      <input
+        type="text"
+        class="w-full border rounded-lg px-3 py-2"
+        placeholder="Formulário"
+      />
+    </form>
+  </body>
+</html>
