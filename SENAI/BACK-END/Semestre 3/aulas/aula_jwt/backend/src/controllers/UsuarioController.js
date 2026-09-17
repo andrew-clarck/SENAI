@@ -2,6 +2,17 @@ const UsuarioService = require("../services/UsuarioService");
 
 class UsuarioController {
   async registrar(req, res) {
+    /*  #swagger.parameters['body'] = {
+                in: 'body',
+                description: 'Dados do novo usuário',
+                schema: {
+                    $nome: 'Administrador',
+                    $email: 'admin@sabordigital.com',
+                    $senha: '123456',
+                    papel: 'admin'
+                }
+            }
+        */
     try {
       const { nome, email, senha, papel } = req.body;
       const resultado = await UsuarioService.registrarUsuario(req.body);
@@ -16,8 +27,17 @@ class UsuarioController {
   }
 
   async login(req, res) {
+    /*  #swagger.parameters['body'] = {
+                in: 'body',
+                description: 'Credenciais de acesso',
+                schema: {
+                    $email: 'admin@sabordigital.com',
+                    $senha: '123456'
+                }
+            }
+        */
     try {
-      const { email, senha } = req.body
+      const { email, senha } = req.body;
       const resultado = await UsuarioService.login(req.body);
       res.json(resultado);
     } catch (erro) {
