@@ -71,7 +71,13 @@ export async function listarFavoritos() {
 }
 
 export async function editarFavorito(id, observacao) {
-  // TODO: implementar
+  try {
+    const response = await fetch(`${BASE_URL}/favoritos/${id}`, {
+      
+    })
+  } catch (erro) {
+    
+  }
 }
 
 export async function removerFavorito(id) {
