@@ -35,7 +35,7 @@ export async function adicionarFavorito(livroId, observacao = "") {
   try {
     const response = await fetch(`${BASE_URL}/favoritos`, {
       method: "POST",
-      header: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ livroId, observacao }),
     });
 
@@ -73,13 +73,30 @@ export async function listarFavoritos() {
 export async function editarFavorito(id, observacao) {
   try {
     const response = await fetch(`${BASE_URL}/favoritos/${id}`, {
-      
-    })
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ observacao }),
+    });
+    if (!response.ok) {
+      throw new Error(`Erro ${response.status}: Falha ao editar favorito.`);
+    }
+    return response.json();
   } catch (erro) {
-    
+    console.error(`editarFavorito: ${erro.message}`);
+    throw erro;
   }
 }
 
 export async function removerFavorito(id) {
-  // TODO: implementar
+  try {
+    const response = await fetch(`${BASE_URL}/favoritos/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      throw new Error(`Erro ${response.status}: Falha ao remover favorito`);
+    }
+  } catch (erro) {
+    console.error(`removerFavorito: ${erro.message}`);
+    throw erro;
+  }
 }

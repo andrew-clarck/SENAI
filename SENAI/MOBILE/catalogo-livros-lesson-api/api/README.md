@@ -35,7 +35,7 @@ O app ja vem configurado com esse endereco em `services/api.js`.
 - Erro 500 em ~10% das requisicoes de escrita (POST/PUT/DELETE), para forcar
   tratamento de erro no app.
 
-Para desligar os erros simulados, altere a flag no topo de `server.js`:
+Para desligar os erros simulados, altere a flag em `config.js`:
 
 ```js
 const SIMULAR_ERROS = false;
