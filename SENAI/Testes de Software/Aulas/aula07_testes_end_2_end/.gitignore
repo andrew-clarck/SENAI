@@ -1,3 +1,24 @@
 node_modules/
 web/dist/
 .DS_Store
+
+# Relatorios e resultados dos testes
+playwright-report/
+test-results/
+blob-report/
+coverage/
+.nyc_output/
+
+# Caches e dados locais dos testes
+.cache/
+.jest-cache/
+.vite/
+**/playwright/.auth/
+
+# Logs
+*.log
+
+# Configuracoes locais (preserva os exemplos)
+.env
+.env.*
+!.env.example

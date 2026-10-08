@@ -31,7 +31,13 @@ class PedidoRepository {
     }
 
     const itemInvalido = dados.itens.some(
-      (item) => !item.nome || item.precoUnitario <= 0 || item.quantidade <= 0,
+      (item) =>
+        !item ||
+        !item.nome ||
+        !Number.isFinite(item.precoUnitario) ||
+        item.precoUnitario <= 0 ||
+        !Number.isFinite(item.quantidade) ||
+        item.quantidade <= 0,
     );
     if (itemInvalido) {
       throw new Error("Itens devem ter nome, preco e quantidade validos");

@@ -1,5 +1,5 @@
 const request = require("supertest");
-const createApp = require("../app");
+const createApp = require("../../app");
 
 describe("API /produtos - Testes de integração", () => {
   let app;
